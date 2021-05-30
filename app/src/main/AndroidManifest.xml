@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Derslet">
-        <activity android:name=".MainActivity">
+        <activity android:name=".OgretmenAyarlar"></activity>
+        <activity android:name=".Acilis" />
+        <activity android:name=".Giris" />
+        <activity android:name=".OgretmenDersKontrol">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

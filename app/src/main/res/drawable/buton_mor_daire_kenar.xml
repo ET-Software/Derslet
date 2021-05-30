@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/mor_koyu">
+    <item>
+        <shape android:shape="oval">
+            <stroke
+                android:width="3dp"
+                android:color="@color/beyaz" />
+            <solid android:color="@color/mor" />
+        </shape>
+    </item>
+</ripple>
