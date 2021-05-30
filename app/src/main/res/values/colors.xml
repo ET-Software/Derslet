@@ -9,6 +9,7 @@
     <!-- Default -->
     <color name="mor">#FF691BCC</color>
     <color name="mor_5">#0D691BCC</color>
+    <color name="mor_75">#BF691BCC</color>
     <color name="mor_koyu">#FF4E1695</color>
 
 </resources>

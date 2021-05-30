@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OgretmenKisaSinavEkle">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ustbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@color/mor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/baslik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="KISA SINAV EKLE"
+        android:textAlignment="center"
+        android:textColor="@color/beyaz"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toEndOf="@+id/ustbar_bg"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg" />
+
+    <ImageButton
+        android:id="@+id/geri_buton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/buton_mor"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toStartOf="@+id/baslik"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/altbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/soru0_isim"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/kare_10_0_10_0_beyaz_kenar_mor"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="10dp"
+                android:text="1. Soru"
+                android:textAlignment="textStart"
+                android:textColor="@color/mor"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/soru0_duzenle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/soru0_duzenle"
+                android:layout_width="90dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/kare_0_10_0_10"
+                android:backgroundTint="@color/mor"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="Düzenle"
+                android:textColor="@color/beyaz"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/soru0_isim"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/soru0_isim"
+                app:layout_constraintTop_toTopOf="@+id/soru0_isim" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/altbar"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:background="@color/mor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/gönder_buton"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/buton_beyaz"
+        android:fontFamily="sans-serif-medium"
+        android:text="Gönder"
+        android:textColor="@color/mor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/altbar"
+        app:layout_constraintEnd_toStartOf="@+id/soru_ekle_buton"
+        app:layout_constraintStart_toStartOf="@+id/altbar"
+        app:layout_constraintTop_toTopOf="@+id/altbar" />
+
+    <Button
+        android:id="@+id/soru_ekle_buton"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/buton_beyaz"
+        android:fontFamily="sans-serif-medium"
+        android:text="Soru Ekle"
+        android:textColor="@color/mor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/altbar"
+        app:layout_constraintEnd_toEndOf="@+id/altbar"
+        app:layout_constraintStart_toEndOf="@+id/gönder_buton"
+        app:layout_constraintTop_toTopOf="@+id/altbar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OgretmenGonderiEkle">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ustbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@color/mor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/baslik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="GÖNDERİ EKLE"
+        android:textAlignment="center"
+        android:textColor="@color/beyaz"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toEndOf="@+id/ustbar_bg"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg" />
+
+    <ImageButton
+        android:id="@+id/geri_buton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/buton_mor"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toStartOf="@+id/baslik"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/gonderi_baslik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:hint="Gönderi Başlığı"
+        android:textColorHint="@color/mor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/mor"
+        app:hintTextColor="@color/mor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg"
+        app:startIconDrawable="@drawable/ic_baseline_edit_24"
+        app:startIconTint="@color/mor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mor"
+            android:fontFamily="sans-serif"
+            android:inputType="text"
+            android:text="Derslet"
+            android:textColor="@color/mor"
+            android:textColorHint="@color/mor"
+            android:textCursorDrawable="@drawable/imlec_siyah"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/gonderi_icerik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:hint="Gönderi İçeriği"
+        android:textColorHint="@color/mor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/mor"
+        app:hintTextColor="@color/mor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gonderi_baslik"
+        app:startIconDrawable="@drawable/ic_baseline_edit_note_24"
+        app:startIconTint="@color/mor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mor"
+            android:fontFamily="sans-serif"
+            android:inputType="textMultiLine"
+            android:text="Derslet bir dünya markasıdır. Bir gün herkes Derslet kullanacak..."
+            android:textColor="@color/mor"
+            android:textColorHint="@color/mor"
+            android:textCursorDrawable="@drawable/imlec_siyah"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/gonderi_kaynak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:hint="Gönderi Kaynağı"
+        android:textColorHint="@color/mor"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/mor"
+        app:hintTextColor="@color/mor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gonderi_icerik"
+        app:startIconDrawable="@drawable/ic_baseline_add_link_24"
+        app:startIconTint="@color/mor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mor"
+            android:fontFamily="sans-serif"
+            android:inputType="text"
+            android:text="www.derslet.com.tr"
+            android:textColor="@color/mor"
+            android:textColorHint="@color/mor"
+            android:textCursorDrawable="@drawable/imlec_siyah"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/kaynak_bilgi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="Boş bırakıldığında eklenmeyecektir."
+        android:textColor="@color/mor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/gonderi_kaynak"
+        app:layout_constraintTop_toBottomOf="@+id/gonderi_kaynak" />
+
+    <Button
+        android:id="@+id/gönder_buton"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/buton_mor"
+        android:text="Gönder"
+        android:textColor="@color/beyaz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kaynak_bilgi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
