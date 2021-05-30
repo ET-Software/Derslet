@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Derslet">
-        <activity android:name=".OgretmenAnamenu"></activity>
+        <activity android:name=".OgretmenSoruEkleDuzenle"></activity>
+        <activity android:name=".OgretmenSohbetMesajlasma" />
+        <activity android:name=".OgretmenSohbetListesi" />
+        <activity android:name=".OgretmenQrKod" />
+        <activity android:name=".OgretmenAnamenu" />
         <activity android:name=".OgretmenKisaSinavSonuclar" />
         <activity android:name=".OgretmenKisaSinavEkle" />
         <activity android:name=".OgretmenGonderiEkle" />
