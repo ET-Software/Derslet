@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OgrenciDerslerDegerlendirmeYap">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ustbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@color/mor"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/baslik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="sans-serif-black"
+        android:text="DERS İSMİ"
+        android:textAlignment="center"
+        android:textColor="@color/beyaz"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toEndOf="@+id/ustbar_bg"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg" />
+
+    <ImageButton
+        android:id="@+id/geri_buton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/buton_mor"
+        app:layout_constraintBottom_toBottomOf="@+id/ustbar_bg"
+        app:layout_constraintEnd_toStartOf="@+id/baslik"
+        app:layout_constraintStart_toStartOf="@id/ustbar_bg"
+        app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
+
+    <TextView
+        android:id="@+id/soru0_baslik"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/kare_10_10_0_0"
+        android:backgroundTint="@color/mor"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Ders için puanınız"
+        android:textColor="@color/beyaz"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg" />
+
+    <TextView
+        android:id="@+id/soru0_icerik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="10dp"
+        android:paddingTop="40dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/mor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/soru0_baslik"
+        app:layout_constraintStart_toStartOf="@+id/soru0_baslik"
+        app:layout_constraintTop_toBottomOf="@+id/soru0_baslik" />
+
+    <TextView
+        android:id="@+id/soru1_baslik"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/kare_10_10_0_0"
+        android:backgroundTint="@color/mor"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Öğretim elemanı için puanınız"
+        android:textColor="@color/beyaz"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/soru0_icerik" />
+
+    <TextView
+        android:id="@+id/soru1_icerik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="10dp"
+        android:paddingTop="40dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/mor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/soru1_baslik"
+        app:layout_constraintStart_toStartOf="@+id/soru1_baslik"
+        app:layout_constraintTop_toBottomOf="@+id/soru1_baslik" />
+
+    <TextView
+        android:id="@+id/soru2_baslik"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/kare_10_10_0_0"
+        android:backgroundTint="@color/mor"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Eklemek istedikleriniz"
+        android:textColor="@color/beyaz"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/soru1_icerik" />
+
+    <TextView
+        android:id="@+id/soru2_icerik"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="10dp"
+        android:paddingTop="40dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:textColor="@color/mor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/soru2_baslik"
+        app:layout_constraintStart_toStartOf="@+id/soru2_baslik"
+        app:layout_constraintTop_toBottomOf="@+id/soru2_baslik" />
+
+    <Button
+        android:id="@+id/gönder_buton"
+        android:layout_width="150dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/buton_mor"
+        android:fontFamily="sans-serif-medium"
+        android:text="GÖNDER"
+        android:textColor="@color/beyaz"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/soru2_icerik" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>

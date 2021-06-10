@@ -9,25 +9,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Derslet">
-        <activity android:name=".OgretmenSoruEkleDuzenle"></activity>
-        <activity android:name=".OgretmenSohbetMesajlasma"></activity>
-        <activity android:name=".OgretmenSohbetListesi"></activity>
-        <activity android:name=".OgretmenQrKod"></activity>
-        <activity android:name=".OgretmenAnamenu"></activity>
-        <activity android:name=".OgretmenKisaSinavSonuclar"></activity>
-        <activity android:name=".OgretmenKisaSinavEkle"></activity>
-        <activity android:name=".OgretmenGonderiEkle"></activity>
-        <activity android:name=".OgretmenDuyuruEkle"></activity>
-        <activity android:name=".OgretmenDuyuru"></activity>
-        <activity android:name=".OgretmenDevamsizlikDetayOgrenci"></activity>
-        <activity android:name=".OgretmenDevamsizlikDetay"></activity>
-        <activity android:name=".OgretmenDerslerGonderi"></activity>
-        <activity android:name=".OgretmenDerslerDevamsizlik"></activity>
-        <activity android:name=".OgretmenDerslerDersListesi"></activity>
-        <activity android:name=".OgretmenDerslerDegerlendirme"></activity>
-        <activity android:name=".OgretmenDersKontrolDersler"></activity>
-        <activity android:name=".OgretmenDegerlendirmeDetay"></activity>
-        <activity android:name=".OgretmenAyarlar"></activity>
+        <activity android:name=".OgrenciDerslerKisasinav" />
+        <activity android:name=".OgrenciDerslerDegerlendirmeYap" />
+        <activity android:name=".OgrenciSohbetDersKatilimcilar" />
+        <activity android:name=".OgrenciSohbetOgretmenMesajlasma" />
+        <activity android:name=".OgrenciSohbetDersMesajlasma" />
+        <activity android:name=".OgrenciDerslerDevamsizlik" />
+        <activity android:name=".OgrenciDerslerDegerlendirme" />
+        <activity android:name=".OgrenciDerslerGonderi" />
+        <activity android:name=".OgrenciDerslerDersListesi" />
+        <activity android:name=".OgrenciDuyuru" />
+        <activity android:name=".OgrenciSohbetOgretmen" />
+        <activity android:name=".OgrenciSohbetDers" />
+        <activity android:name=".OgrenciAnamenu" />
+        <activity android:name=".OgrenciAyarlar" />
+        <activity android:name=".OgretmenSoruEkleDuzenle" />
+        <activity android:name=".OgretmenSohbetMesajlasma" />
+        <activity android:name=".OgretmenSohbetListesi" />
+        <activity android:name=".OgretmenQrKod" />
+        <activity android:name=".OgretmenAnamenu" />
+        <activity android:name=".OgretmenKisaSinavSonuclar" />
+        <activity android:name=".OgretmenKisaSinavEkle" />
+        <activity android:name=".OgretmenGonderiEkle" />
+        <activity android:name=".OgretmenDuyuruEkle" />
+        <activity android:name=".OgretmenDuyuru" />
+        <activity android:name=".OgretmenDevamsizlikDetayOgrenci" />
+        <activity android:name=".OgretmenDevamsizlikDetay" />
+        <activity android:name=".OgretmenDerslerGonderi" />
+        <activity android:name=".OgretmenDerslerDevamsizlik" />
+        <activity android:name=".OgretmenDerslerDersListesi" />
+        <activity android:name=".OgretmenDerslerDegerlendirme" />
+        <activity android:name=".OgretmenDersKontrolDersler" />
+        <activity android:name=".OgretmenDegerlendirmeDetay" />
+        <activity android:name=".OgretmenAyarlar" />
         <activity android:name=".Acilis">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Giris"></activity>
-        <activity android:name=".OgretmenDersKontrol"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Giris" />
+        <activity android:name=".OgretmenDersKontrol" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
