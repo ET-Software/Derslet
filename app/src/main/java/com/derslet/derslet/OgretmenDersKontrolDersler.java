@@ -18,12 +18,13 @@ public class OgretmenDersKontrolDersler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_ders_kontrol_dersler);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDersKontrolDersler.this, OgretmenAnamenu.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenDersKontrolDersler.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -31,9 +32,15 @@ public class OgretmenDersKontrolDersler extends AppCompatActivity {
         ders0_isim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDersKontrolDersler.this, OgretmenDersKontrol.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDersKontrolDersler.this, OgretmenDersKontrol.class);
+                startActivity(intent);
+                OgretmenDersKontrolDersler.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

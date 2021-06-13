@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,12 +25,13 @@ public class OgretmenDersKontrol extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_ders_kontrol);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDersKontrol.this, OgretmenDersKontrolDersler.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenDersKontrol.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -44,8 +47,9 @@ public class OgretmenDersKontrol extends AppCompatActivity {
         qrkod_ac_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDersKontrol.this, OgretmenQrKod.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDersKontrol.this, OgretmenQrKod.class);
+                startActivity(intent);
+                OgretmenDersKontrol.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -53,15 +57,34 @@ public class OgretmenDersKontrol extends AppCompatActivity {
         ders_bitir_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Timer().schedule(new TimerTask() {
+
+                String dersSonlandirmaDurumu = "Ders başarıyla sonlandırıldı!"; //databaseden çekilecek veriye göre değişecek
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(getApplicationContext(), OgretmenAnamenu.class));
-                    }
-                }, 1000); // 1sn bekliyor.
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(getApplicationContext(), OgretmenAnamenu.class));
+                                OgretmenDersKontrol.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                                timer.cancel();
+                            }
+                        });
 
-                // Toast ile ekrana bilgi yazısı yazdırılacak.
+                    }
+                }, 1000);
+
+                Toast toast = Toast.makeText(getApplicationContext(), dersSonlandirmaDurumu, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 100);
+                toast.show();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

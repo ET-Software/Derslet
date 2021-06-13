@@ -17,12 +17,13 @@ public class OgretmenDuyuru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_duyuru);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDuyuru.this, OgretmenAnamenu.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -30,9 +31,15 @@ public class OgretmenDuyuru extends AppCompatActivity {
         duyuru_ekle_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDuyuru.this, OgretmenDuyuruEkle.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDuyuru.this, OgretmenDuyuruEkle.class);
+                startActivity(intent);
+                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

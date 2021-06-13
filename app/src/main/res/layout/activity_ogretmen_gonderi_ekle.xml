@@ -168,7 +168,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gonderi_kaynak" />
 
     <Button
-        android:id="@+id/gönder_buton"
+        android:id="@+id/gonder_buton"
         android:layout_width="150dp"
         android:layout_height="44dp"
         android:layout_marginTop="50dp"

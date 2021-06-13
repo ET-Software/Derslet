@@ -17,13 +17,20 @@ public class OgretmenAyarlar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_ayarlar);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAyarlar.this, OgretmenAnamenu.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenAyarlar.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

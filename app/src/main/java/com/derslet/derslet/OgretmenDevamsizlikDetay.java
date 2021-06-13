@@ -18,12 +18,13 @@ public class OgretmenDevamsizlikDetay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_devamsizlik_detay);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDevamsizlikDetay.this, OgretmenDerslerDevamsizlik.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenDevamsizlikDetay.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -31,9 +32,15 @@ public class OgretmenDevamsizlikDetay extends AppCompatActivity {
         ogrenci0_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDevamsizlikDetay.this, OgretmenDevamsizlikDetayOgrenci.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDevamsizlikDetay.this, OgretmenDevamsizlikDetayOgrenci.class);
+                startActivity(intent);
+                OgretmenDevamsizlikDetay.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

@@ -22,12 +22,13 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_sohbet_mesajlasma);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenSohbetMesajlasma.this, OgretmenSohbetListesi.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenSohbetMesajlasma.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -46,5 +47,10 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
                 // Yapılacak İşlemler
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

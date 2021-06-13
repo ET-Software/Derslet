@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class OgretmenAnamenu extends AppCompatActivity {
 
@@ -21,12 +23,14 @@ public class OgretmenAnamenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_anamenu);
 
+        //Butonlar
         ayar_buton = (ImageButton)findViewById(R.id.ayar_buton);
         ayar_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAnamenu.this, OgretmenAyarlar.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenAnamenu.this, OgretmenAyarlar.class);
+                startActivity(intent);
+                OgretmenAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -34,8 +38,9 @@ public class OgretmenAnamenu extends AppCompatActivity {
         duyuru_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAnamenu.this, OgretmenDuyuru.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenAnamenu.this, OgretmenDuyuru.class);
+                startActivity(intent);
+                OgretmenAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -43,8 +48,9 @@ public class OgretmenAnamenu extends AppCompatActivity {
         derskontrol_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAnamenu.this, OgretmenDersKontrolDersler.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenAnamenu.this, OgretmenDersKontrolDersler.class);
+                startActivity(intent);
+                OgretmenAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -52,8 +58,9 @@ public class OgretmenAnamenu extends AppCompatActivity {
         dersler_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAnamenu.this, OgretmenDerslerDersListesi.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenAnamenu.this, OgretmenDerslerDersListesi.class);
+                startActivity(intent);
+                OgretmenAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -61,9 +68,16 @@ public class OgretmenAnamenu extends AppCompatActivity {
         sohbet_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenAnamenu.this, OgretmenSohbetListesi.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenAnamenu.this, OgretmenSohbetListesi.class);
+                startActivity(intent);
+                OgretmenAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

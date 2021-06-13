@@ -19,12 +19,13 @@ public class OgretmenSohbetListesi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_sohbet_listesi);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenSohbetListesi.this, OgretmenAnamenu.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenSohbetListesi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -32,8 +33,9 @@ public class OgretmenSohbetListesi extends AppCompatActivity {
         ogrenci0_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenSohbetListesi.this, OgretmenSohbetMesajlasma.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenSohbetListesi.this, OgretmenSohbetMesajlasma.class);
+                startActivity(intent);
+                OgretmenSohbetListesi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -44,5 +46,10 @@ public class OgretmenSohbetListesi extends AppCompatActivity {
                 // Yapılacak İşlemler
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

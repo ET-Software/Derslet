@@ -20,12 +20,13 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_dersler_devamsizlik);
 
+        //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
         geri_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDerslerDersListesi.class);
-                startActivity(ıntent);
+                finish();
+                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -33,8 +34,9 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
         ders0_devamsizlik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDevamsizlikDetay.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDevamsizlikDetay.class);
+                startActivity(intent);
+                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
@@ -42,8 +44,10 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
         buton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDerslerGonderi.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDerslerGonderi.class);
+                startActivity(intent);
+                finish();
+                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.slidein_rl,R.anim.slideout_rl);
             }
         });
 
@@ -51,9 +55,16 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
         buton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ıntent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDerslerDegerlendirme.class);
-                startActivity(ıntent);
+                Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDerslerDegerlendirme.class);
+                startActivity(intent);
+                finish();
+                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.slidein_rl,R.anim.slideout_rl);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 }

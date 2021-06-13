@@ -90,7 +90,7 @@
         app:endIconMode="clear_text"
         app:endIconTint="@color/mor"
         app:hintTextColor="@color/mor"
-        app:layout_constraintBottom_toTopOf="@+id/gönder_buton"
+        app:layout_constraintBottom_toTopOf="@+id/gonder_buton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ders_secim"
@@ -112,7 +112,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/gönder_buton"
+        android:id="@+id/gonder_buton"
         android:layout_width="150dp"
         android:layout_height="44dp"
         android:layout_marginTop="35dp"
