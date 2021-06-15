@@ -40,7 +40,7 @@ public class OgrenciDerslerDevamsizlik extends AppCompatActivity {
             }
         });
 
-        buton2 = (ImageButton)findViewById(R.id.buton1);
+        buton2 = (ImageButton)findViewById(R.id.buton2);
         buton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -28,7 +28,7 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
             }
         });
 
-        buton2 = (ImageButton)findViewById(R.id.buton3);
+        buton2 = (ImageButton)findViewById(R.id.buton2);
         buton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
