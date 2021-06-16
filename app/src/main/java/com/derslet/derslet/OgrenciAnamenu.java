@@ -32,15 +32,15 @@ public class OgrenciAnamenu extends AppCompatActivity {
             }
         });
 
-        /*qrkod_buton = (Button)findViewById(R.id.derskontrol_buton);
+        qrkod_buton = (Button)findViewById(R.id.qrkod_buton);
         qrkod_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(OgrenciAnamenu.this, OgrenciQrkod.class);
+                Intent intent=new Intent(OgrenciAnamenu.this, OgrenciQrKod.class);
                 startActivity(intent);
                 OgrenciAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
-        });*/
+        });
 
         duyuru_buton = (Button)findViewById(R.id.duyuru_buton);
         duyuru_buton.setOnClickListener(new View.OnClickListener() {
