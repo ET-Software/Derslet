@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/karsilama_yazi" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ogrencino"
+        android:id="@+id/kullanicino"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -77,6 +77,7 @@
         app:startIconTint="@color/beyaz">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/kullanicino_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/beyaz"
@@ -109,11 +110,12 @@
         app:hintTextColor="@color/beyaz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ogrencino"
+        app:layout_constraintTop_toBottomOf="@+id/kullanicino"
         app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
         app:startIconTint="@color/beyaz">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sifre_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/beyaz"
