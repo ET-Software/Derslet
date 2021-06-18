@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -62,6 +64,12 @@ public class Giris extends AppCompatActivity {
                             finish();
                             Giris.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                         }
+                    }
+                    else{
+                        // Bilgilendirme Mesajı
+                        Toast toast = Toast.makeText(getApplicationContext(), "Hatalı Giriş!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 100);
+                        toast.show();
                     }
                 }
                 catch (Exception e){
