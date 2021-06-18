@@ -2,11 +2,20 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class OgrenciAnamenu extends AppCompatActivity {
 
@@ -15,11 +24,43 @@ public class OgrenciAnamenu extends AppCompatActivity {
     Button qrkod_buton;
     Button dersler_buton;
     Button sohbet_buton;
+    TextView isim;
+    ImageView profil;
+
+    Veritabani veritabani = new Veritabani();
+    Statement stmt = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogrenci_anamenu);
+
+        isim = findViewById(R.id.ogrenci_isim);
+        profil = findViewById(R.id.profil);
+
+        //Yerel verilerde eğer giriş anahtarı kayıtlı ise veriyi çekme işlemi
+        SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
+        String token = yerel_veriler.getString("Token","");
+
+        // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // Veritabanı Sorgu İşlemleri
+        try {
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM kullanicilar WHERE id = '" + token + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                isim.setText(rs.getString("isim") + " " + rs.getString("soyisim"));
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
 
         //Butonlar
         ayar_buton = (ImageButton)findViewById(R.id.ayar_buton);
