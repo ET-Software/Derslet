@@ -2,7 +2,9 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
@@ -52,6 +54,14 @@ public class Giris extends AppCompatActivity {
                     if (rs.next()){
                         // Kullanıcı Tip Kontrolü (True = Öğretmen, False = Öğrenci)
                         Boolean tip = rs.getBoolean("tip");
+                        // Kullanıcıya özel giriş anahtarı bir sonraki uygulama girişinde otomatik giriş yapması için
+                        String token = rs.getString("id");
+
+                        SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri",Context.MODE_PRIVATE);
+                        SharedPreferences.Editor duzenleyeci = yerel_veriler.edit();
+                        duzenleyeci.putString("Token", token); //Token yerel olarak kaydediliyor
+                        duzenleyeci.commit(); //Kayıt işlemi gerçekleşiyor.
+
                         if (tip){
                             Intent intent=new Intent(Giris.this, OgretmenAnamenu.class);
                             startActivity(intent);
