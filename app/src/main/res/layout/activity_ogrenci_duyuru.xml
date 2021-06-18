@@ -82,59 +82,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_duyuru" />
-
-    <!--<ScrollView
-        android:id="@+id/scrollView7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ders_secim">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/duyuru_baslik"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="35dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="21 Ocak 2021 - Ders İsmi"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/duyuru_yazi"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="10dp"
-                android:paddingTop="15dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="Duyuru yazısı"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/duyuru_baslik" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>-->
+        tools:listitem="@layout/list_duyuru"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
