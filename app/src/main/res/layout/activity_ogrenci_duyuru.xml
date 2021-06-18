@@ -73,7 +73,19 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ScrollView
+    <ListView
+        android:id="@+id/duyuru_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="155dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_duyuru" />
+
+    <!--<ScrollView
+        android:id="@+id/scrollView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,6 +135,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/duyuru_baslik" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

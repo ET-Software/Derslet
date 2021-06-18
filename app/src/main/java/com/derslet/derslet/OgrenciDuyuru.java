@@ -11,11 +11,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class OgrenciDuyuru extends AppCompatActivity {
 
@@ -24,6 +27,8 @@ public class OgrenciDuyuru extends AppCompatActivity {
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
+
+    ListView duyuru_listesi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,7 @@ public class OgrenciDuyuru extends AppCompatActivity {
                 dersidleri.add(rs.getString("dersid"));
             }
 
-            //Öğrencinin aldığı derslerin isim sorgusu
+            // Öğrencinin aldığı derslerin isim sorgusu
             for(String dersid : dersidleri){
                 sql = "SELECT * FROM dersler WHERE id = '" + dersid + "' ";
                 rs = stmt.executeQuery(sql);
@@ -75,8 +80,7 @@ public class OgrenciDuyuru extends AppCompatActivity {
         }
 
         //Ders isimlerinin açılır filtre listesine eklenmesi
-        ArrayAdapter<String> ders_liste = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, dersisimleri);
+        ArrayAdapter<String> ders_liste = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, dersisimleri);
         ders_secim.setAdapter(ders_liste);
 
         //Butonlar
@@ -88,6 +92,36 @@ public class OgrenciDuyuru extends AppCompatActivity {
                 OgrenciDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
+
+        duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi);
+        ArrayList<Duyuru> arrayList = new ArrayList<>();
+        arrayList.add(new Duyuru("Deneme1", "Deneme içerik1"));
+        arrayList.add(new Duyuru("Deneme2", "Deneme içerik2"));
+        arrayList.add(new Duyuru("Deneme3", "Deneme içerik3"));
+        arrayList.add(new Duyuru("Deneme4", "Deneme içerik4"));
+        arrayList.add(new Duyuru("Deneme5", "Deneme içerik5"));
+        arrayList.add(new Duyuru("Deneme6", "Deneme içerik6"));
+        arrayList.add(new Duyuru("Deneme7", "Deneme içerik7"));
+
+        /*Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        arrayList.add(new Duyuru("Deneme8", "Deneme içerik8"));
+                        duyuru_listesi.setAdapter(duyuruAdapter);
+                        timer.cancel();
+                    }
+                });
+
+            }
+        }, 1000); // 1sn bekliyor.*/
+
+
+        DuyuruAdapter duyuruAdapter = new DuyuruAdapter(this, R.layout.list_duyuru, arrayList);
+        duyuru_listesi.setAdapter(duyuruAdapter);
     }
 
 
