@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -35,10 +36,14 @@ public class OgrenciDuyuru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogrenci_duyuru);
 
-        ders_secim = findViewById(R.id.ic_liste); // Açılır ders filtresi
+        ders_secim = (AutoCompleteTextView) findViewById(R.id.ic_liste); // Açılır ders filtresi
+        duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi);
 
         ArrayList<String> dersidleri = new ArrayList<String>(); // Veri tabanından çekilecek ders idleri
         ArrayList<String> dersisimleri = new ArrayList<String>(); // Veri tabanından çekilecek ders isimleri
+        dersisimleri.add("---");
+        ArrayList<ArrayList> duyurular = new ArrayList<ArrayList>();
+        duyurular.add(new ArrayList<Duyuru>());
 
         //Yerel verilerde eğer giriş anahtarı kayıtlı ise veriyi çekme işlemi
         SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
@@ -73,15 +78,37 @@ public class OgrenciDuyuru extends AppCompatActivity {
                     toast.show();
                 }
             }
+            for(String dersid : dersidleri){
+                sql = "SELECT * FROM duyuru WHERE dersid = '" + dersid + "' ";
+                rs = stmt.executeQuery(sql);
+                ArrayList <Duyuru> ders_duyuruları = new ArrayList<Duyuru>();
+                while(rs.next()){
+                    ders_duyuruları.add(new Duyuru(rs.getString("tarih"), rs.getString("icerik")));
+                }
+                duyurular.add(ders_duyuruları);
+                duyurular.get(0).addAll(ders_duyuruları);
+            }
 
         } catch (Exception e){
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
 
+        //Duyuruların listelenmesi
+        duyuru_listesi.setAdapter(new DuyuruAdapter(this, R.layout.list_duyuru, duyurular.get(0)));
+
         //Ders isimlerinin açılır filtre listesine eklenmesi
-        ArrayAdapter<String> ders_liste = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, dersisimleri);
-        ders_secim.setAdapter(ders_liste);
+        ArrayAdapter<String> dersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, dersisimleri);
+        ders_secim.setThreshold(1);
+        ders_secim.setAdapter(dersAdapter);
+        ders_secim.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                duyuru_listesi.setAdapter(new DuyuruAdapter(OgrenciDuyuru.this, R.layout.list_duyuru, duyurular.get(arg2)));
+            }
+        });
+
+
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
@@ -93,35 +120,6 @@ public class OgrenciDuyuru extends AppCompatActivity {
             }
         });
 
-        duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi);
-        ArrayList<Duyuru> arrayList = new ArrayList<>();
-        arrayList.add(new Duyuru("Deneme1", "Deneme içerik1"));
-        arrayList.add(new Duyuru("Deneme2", "Deneme içerik2"));
-        arrayList.add(new Duyuru("Deneme3", "Deneme içerik3"));
-        arrayList.add(new Duyuru("Deneme4", "Deneme içerik4"));
-        arrayList.add(new Duyuru("Deneme5", "Deneme içerik5"));
-        arrayList.add(new Duyuru("Deneme6", "Deneme içerik6"));
-        arrayList.add(new Duyuru("Deneme7", "Deneme içerik7"));
-
-        /*Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        arrayList.add(new Duyuru("Deneme8", "Deneme içerik8"));
-                        duyuru_listesi.setAdapter(duyuruAdapter);
-                        timer.cancel();
-                    }
-                });
-
-            }
-        }, 1000); // 1sn bekliyor.*/
-
-
-        DuyuruAdapter duyuruAdapter = new DuyuruAdapter(this, R.layout.list_duyuru, arrayList);
-        duyuru_listesi.setAdapter(duyuruAdapter);
     }
 
 

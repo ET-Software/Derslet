@@ -74,11 +74,12 @@ public class OgretmenDuyuruEkle extends AppCompatActivity {
         }
 
         //Ders isimlerinin açılır filtre listesine eklenmesi
-        ArrayAdapter<String> ders_liste = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> dersAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, dersisimleri);
         ders_secim.setThreshold(1);
-        ders_secim.setAdapter(ders_liste);
+        ders_secim.setAdapter(dersAdapter);
         ders_secim.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 secim = arg2;
             }
