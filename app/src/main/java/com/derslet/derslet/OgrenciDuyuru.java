@@ -18,8 +18,7 @@ import android.widget.Toast;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Collections;
 
 public class OgrenciDuyuru extends AppCompatActivity {
 
@@ -78,22 +77,27 @@ public class OgrenciDuyuru extends AppCompatActivity {
                     toast.show();
                 }
             }
+            int sayac = 1;
             for(String dersid : dersidleri){
                 sql = "SELECT * FROM duyuru WHERE dersid = '" + dersid + "' ";
                 rs = stmt.executeQuery(sql);
                 ArrayList <Duyuru> ders_duyuruları = new ArrayList<Duyuru>();
                 while(rs.next()){
-                    ders_duyuruları.add(new Duyuru(rs.getString("tarih"), rs.getString("icerik")));
+                    ders_duyuruları.add(new Duyuru(rs.getString("tarih") + " - " + dersisimleri.get(sayac) , rs.getString("icerik")));
                 }
                 duyurular.add(ders_duyuruları);
                 duyurular.get(0).addAll(ders_duyuruları);
+                sayac++;
             }
 
         } catch (Exception e){
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-
+        // Duyuruların tarihe göre sıralanması
+        for (int i=0; i<duyurular.size();i++){
+            Collections.reverse(duyurular.get(i));
+        }
         //Duyuruların listelenmesi
         duyuru_listesi.setAdapter(new DuyuruAdapter(this, R.layout.list_duyuru, duyurular.get(0)));
 

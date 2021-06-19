@@ -7,18 +7,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OgretmenDuyuru extends AppCompatActivity {
 
@@ -64,21 +63,27 @@ public class OgretmenDuyuru extends AppCompatActivity {
                 dersidleri.add(rs.getString("id"));
                 dersisimleri.add(rs.getString("dersadi"));
             }
-
+            int sayac = 1;
             for(String dersid : dersidleri){
                 sql = "SELECT * FROM duyuru WHERE dersid = '" + dersid + "' ";
                 rs = stmt.executeQuery(sql);
                 ArrayList <Duyuru> ders_duyuruları = new ArrayList<Duyuru>();
                 while(rs.next()){
-                    ders_duyuruları.add(new Duyuru(rs.getString("tarih"), rs.getString("icerik")));
+                    ders_duyuruları.add(new Duyuru(rs.getString("tarih") + " - " + dersisimleri.get(sayac), rs.getString("icerik")));
                 }
                 duyurular.add(ders_duyuruları);
                 duyurular.get(0).addAll(ders_duyuruları);
+                sayac++;
             }
 
         }  catch (Exception e){
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
+        }
+
+        // Duyuruların tarihe göre sıralanması
+        for (int i=0; i<duyurular.size();i++){
+            Collections.reverse(duyurular.get(i));
         }
 
         //Duyuruların listelenmesi
