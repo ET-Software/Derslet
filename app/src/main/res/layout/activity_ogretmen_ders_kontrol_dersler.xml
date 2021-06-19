@@ -44,56 +44,20 @@
         app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ListView
+        android:id="@+id/ogretmen_ders_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg"
-        app:layout_constraintVertical_bias="1.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/ders0_isim"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_10_0_10_0_beyaz_kenar_mor"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="10dp"
-                android:text="DERS İSMİ"
-                android:textAlignment="textStart"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ders0_kisisayisi"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ders0_kisisayisi"
-                android:layout_width="65dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_0_10_0_10"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="20"
-                android:textColor="@color/beyaz"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@id/ders0_isim"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ders0_isim"
-                app:layout_constraintTop_toTopOf="@+id/ders0_isim" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ogretmen_dersler"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
