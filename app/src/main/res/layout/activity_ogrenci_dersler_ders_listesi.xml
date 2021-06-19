@@ -44,81 +44,20 @@
         app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ListView
+        android:id="@+id/ogrenci_ders_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/ders0_buton"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_10_0_10_0_bos_kenar_mor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ders0_bilgi"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ders0_isim"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="Ders İsmi"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@id/ders0_ogretmen"
-                app:layout_constraintEnd_toEndOf="@+id/ders0_buton"
-                app:layout_constraintStart_toStartOf="@+id/ders0_buton"
-                app:layout_constraintTop_toTopOf="@+id/ders0_buton" />
-
-            <TextView
-                android:id="@+id/ders0_ogretmen"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif"
-                android:text="Öğretmen İsim Soyisim"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ders0_buton"
-                app:layout_constraintEnd_toEndOf="@+id/ders0_buton"
-                app:layout_constraintStart_toStartOf="@+id/ders0_buton"
-                app:layout_constraintTop_toBottomOf="@+id/ders0_isim" />
-
-            <TextView
-                android:id="@+id/ders0_bilgi"
-                android:layout_width="70dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_0_10_0_10"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="15"
-                android:textColor="@color/beyaz"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ders0_buton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ders0_buton"
-                app:layout_constraintTop_toTopOf="@+id/ders0_buton" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ogrenci_dersler"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

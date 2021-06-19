@@ -85,6 +85,9 @@
         tools:listitem="@layout/list_duyuru"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:childDivider="@null" />
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false"
+        android:listSelector="@android:color/transparent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
