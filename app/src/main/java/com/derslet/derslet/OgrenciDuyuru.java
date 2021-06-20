@@ -38,6 +38,22 @@ public class OgrenciDuyuru extends AppCompatActivity {
         ders_secim = (AutoCompleteTextView) findViewById(R.id.ic_liste); // Açılır ders filtresi
         duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi);
 
+        //Butonlar
+        geri_buton = (ImageButton)findViewById(R.id.geri_buton);
+        geri_buton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                OgrenciDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         ArrayList<String> dersidleri = new ArrayList<String>(); // Veri tabanından çekilecek ders idleri
         ArrayList<String> dersisimleri = new ArrayList<String>(); // Veri tabanından çekilecek ders isimleri
         dersisimleri.add("---");
@@ -70,12 +86,6 @@ public class OgrenciDuyuru extends AppCompatActivity {
                 if(rs.next()){
                     dersisimleri.add(rs.getString("dersadi"));
                 }
-                else{
-                    //Toast menü
-                    Toast toast = Toast.makeText(getApplicationContext(), "Ders bilgileri çekilirken hata alındı!", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 100);
-                    toast.show();
-                }
             }
             int sayac = 1;
             for(String dersid : dersidleri){
@@ -107,25 +117,12 @@ public class OgrenciDuyuru extends AppCompatActivity {
         ders_secim.setAdapter(dersAdapter);
         ders_secim.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                duyuru_listesi.setAdapter(new DuyuruAdapter(OgrenciDuyuru.this, R.layout.list_duyuru, duyurular.get(arg2)));
-            }
-        });
-
-
-
-        //Butonlar
-        geri_buton = (ImageButton)findViewById(R.id.geri_buton);
-        geri_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                OgrenciDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                duyuru_listesi.setAdapter(new DuyuruAdapter(OgrenciDuyuru.this, R.layout.list_duyuru, duyurular.get(pos)));
             }
         });
 
     }
-
 
     @Override
     public void onBackPressed() {

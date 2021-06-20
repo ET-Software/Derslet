@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.sql.Statement;
 
 public class OgretmenDerslerGonderi extends AppCompatActivity {
 
@@ -13,11 +16,24 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
     ImageButton gonderi_ekle_buton;
     ImageButton buton2;
     ImageButton buton3;
+    TextView baslik;
+
+    Veritabani veritabani = new Veritabani();
+    Statement stmt = null;
+
+    String ders_id;
+    String ders_adi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_dersler_gonderi);
+
+        ders_id = getIntent().getStringExtra("DERS_ID");
+        ders_adi = getIntent().getStringExtra("DERS_ADI");
+
+        baslik = findViewById(R.id.baslik);
+        baslik.setText(ders_adi);
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
@@ -44,6 +60,8 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenDerslerDegerlendirme.class);
+                intent.putExtra("DERS_ID", ders_id);
+                intent.putExtra("DERS_ADI", ders_adi);
                 startActivity(intent);
                 finish();
                 OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.slidein_lr,R.anim.slideout_lr);
@@ -55,6 +73,8 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenDerslerDevamsizlik.class);
+                intent.putExtra("DERS_ID", ders_id);
+                intent.putExtra("DERS_ADI", ders_adi);
                 startActivity(intent);
                 finish();
                 OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.slidein_lr,R.anim.slideout_lr);

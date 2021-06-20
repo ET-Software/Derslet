@@ -26,6 +26,11 @@ public class Acilis extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acilis);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
 
         // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -40,7 +45,6 @@ public class Acilis extends AppCompatActivity {
         }else{
             TokenileGirisYap(token);
         }
-
     }
 
     void TokenileGirisYap(String _token){
@@ -68,7 +72,7 @@ public class Acilis extends AppCompatActivity {
                                 }
                             });
                         }
-                    }, 1000);
+                    }, 100);
 
                 }
                 else {
@@ -86,7 +90,7 @@ public class Acilis extends AppCompatActivity {
                                 }
                             });
                         }
-                    }, 1000);
+                    }, 100);
                 }
             } else{
                 GirisEkraniAc();
@@ -114,7 +118,7 @@ public class Acilis extends AppCompatActivity {
                 });
 
             }
-        }, 1000);
+        }, 100);
     }
 
 

@@ -35,8 +35,33 @@ public class OgretmenDuyuru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_duyuru);
 
-        ders_secim = findViewById(R.id.ic_liste); // Açılır ders filtresi
-        duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi);
+        ders_secim = (AutoCompleteTextView) findViewById(R.id.ic_liste); // Açılır ders filtresi
+        duyuru_listesi = (ListView) findViewById(R.id.duyuru_listesi); // Duyuru Listesi
+
+        //Butonlar
+        geri_buton = (ImageButton)findViewById(R.id.geri_buton);
+        geri_buton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            }
+        });
+
+        duyuru_ekle_buton = (ImageButton)findViewById(R.id.duyuru_ekle_buton);
+        duyuru_ekle_buton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(OgretmenDuyuru.this, OgretmenDuyuruEkle.class);
+                startActivity(intent);
+                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
 
         ArrayList<String> dersidleri = new ArrayList<String>(); // Veri tabanından çekilecek ders idleri
         ArrayList<String> dersisimleri = new ArrayList<String>(); // Veri tabanından çekilecek ders isimleri
@@ -99,27 +124,8 @@ public class OgretmenDuyuru extends AppCompatActivity {
                 duyuru_listesi.setAdapter(new DuyuruAdapter(OgretmenDuyuru.this, R.layout.list_duyuru, duyurular.get(arg2)));
             }
         });
-
-        //Butonlar
-        geri_buton = (ImageButton)findViewById(R.id.geri_buton);
-        geri_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-            }
-        });
-
-        duyuru_ekle_buton = (ImageButton)findViewById(R.id.duyuru_ekle_buton);
-        duyuru_ekle_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(OgretmenDuyuru.this, OgretmenDuyuruEkle.class);
-                startActivity(intent);
-                OgretmenDuyuru.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-            }
-        });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
