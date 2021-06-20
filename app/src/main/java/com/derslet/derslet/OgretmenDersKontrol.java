@@ -8,8 +8,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Statement;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,11 +21,25 @@ public class OgretmenDersKontrol extends AppCompatActivity {
     ImageButton ogrenci_ekle_buton;
     Button qrkod_ac_buton;
     Button ders_bitir_buton;
+    TextView baslik;
+
+    Veritabani veritabani = new Veritabani();
+    Statement stmt = null;
+
+    String ders_id;
+    String ders_adi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_ders_kontrol);
+
+        ders_id = getIntent().getStringExtra("DERS_ID");
+        ders_adi = getIntent().getStringExtra("DERS_ADI");
+
+        baslik = findViewById(R.id.baslik);
+        baslik.setText(ders_adi);
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
