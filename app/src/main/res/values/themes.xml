@@ -32,5 +32,12 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
+    
+    <style name="AltSecim.Tema" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AltSecim.Style</item>
+    </style>
+    <style name="AltSecim.Style" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/alt_secim_arkaplan</item>
+    </style>
 
 </resources>

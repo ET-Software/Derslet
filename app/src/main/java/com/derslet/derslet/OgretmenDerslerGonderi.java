@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.sql.Statement;
 
@@ -17,6 +21,7 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
     ImageButton buton2;
     ImageButton buton3;
     TextView baslik;
+    BottomSheetDialog altsecim;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -49,9 +54,31 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
         gonderi_ekle_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenKisaSinavEkle.class);
-                startActivity(intent);
-                OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                altsecim = new BottomSheetDialog(OgretmenDerslerGonderi.this, R.style.AltSecim_Tema);
+                View sheetView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.alt_secim, (ViewGroup) findViewById(R.id.alt_secim) );
+
+                sheetView.findViewById(R.id.gonderi_ekle).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenGonderiEkle.class);
+                        startActivity(intent);
+                        OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                        altsecim.dismiss();
+                    }
+                });
+
+                sheetView.findViewById(R.id.kisasinav_ekle).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenKisaSinavEkle.class);
+                        startActivity(intent);
+                        OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                        altsecim.dismiss();
+                    }
+                });
+
+                altsecim.setContentView(sheetView);
+                altsecim.show();
             }
         });
 
