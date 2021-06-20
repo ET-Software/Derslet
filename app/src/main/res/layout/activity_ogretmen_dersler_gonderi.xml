@@ -44,251 +44,22 @@
         app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
-    <ScrollView
-        android:id="@+id/scrollView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/altbar_bg"
+    <ListView
+        android:id="@+id/ogretmen_gonderi_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/gonderi0_baslik"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_0_0"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:text="Gönderi Başlığı"
-                android:textAlignment="textStart"
-                android:textColor="@color/beyaz"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlCompat" />
-
-            <TextView
-                android:id="@+id/gonderi0_icerik"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="10dp"
-                android:paddingTop="40dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="İçerik Yazısı"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/gonderi0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/gonderi0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/gonderi0_baslik" />
-
-            <View
-                android:id="@+id/gonderi0_bilgi_bg"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@color/mor_5"
-                app:layout_constraintEnd_toEndOf="@+id/gonderi0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/gonderi0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/gonderi0_baslik" />
-
-            <TextView
-                android:id="@+id/gonderi0_bilgi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Gönderi"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/gonderi0_bilgi_bg"
-                app:layout_constraintStart_toStartOf="@+id/gonderi0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/gonderi0_baslik" />
-
-            <TextView
-                android:id="@+id/gönderi0_tarih"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="01.01.2021"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/gonderi0_bilgi_bg"
-                app:layout_constraintEnd_toEndOf="@+id/gonderi0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/gonderi0_baslik" />
-
-            <TextView
-                android:id="@+id/kaynak0_baslik"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_0_0"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:text="Gönderi Başlığı"
-                android:textAlignment="textStart"
-                android:textColor="@color/beyaz"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/gonderi0_icerik"
-                tools:ignore="RtlCompat" />
-
-            <TextView
-                android:id="@+id/kaynak0_icerik"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="10dp"
-                android:paddingTop="40dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="İçerik Yazısı"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/kaynak0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/kaynak0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/kaynak0_baslik" />
-
-            <View
-                android:id="@+id/kaynak0_bilgi_bg"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@color/mor_5"
-                app:layout_constraintEnd_toEndOf="@+id/kaynak0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/kaynak0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/kaynak0_baslik" />
-
-            <TextView
-                android:id="@+id/kaynak0_bilgi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Kaynak: İndirmek için tıklayınız."
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/kaynak0_bilgi_bg"
-                app:layout_constraintStart_toStartOf="@+id/kaynak0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/kaynak0_baslik" />
-
-            <TextView
-                android:id="@+id/kaynak0_tarih"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="01.01.2021"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/kaynak0_bilgi_bg"
-                app:layout_constraintEnd_toEndOf="@+id/kaynak0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/kaynak0_baslik" />
-
-            <TextView
-                android:id="@+id/kisasinav0_baslik"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_0_0"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:text="Gönderi Başlığı"
-                android:textAlignment="textStart"
-                android:textColor="@color/beyaz"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/kaynak0_icerik"
-                tools:ignore="RtlCompat" />
-
-            <TextView
-                android:id="@+id/kisasinav0_icerik"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
-                android:fontFamily="sans-serif"
-                android:paddingLeft="10dp"
-                android:paddingTop="40dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="İçerik Yazısı"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/kisasinav0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/kisasinav0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/kisasinav0_baslik" />
-
-            <View
-                android:id="@+id/kisasinav0_bilgi_bg"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@color/mor_5"
-                app:layout_constraintEnd_toEndOf="@+id/kisasinav0_baslik"
-                app:layout_constraintStart_toStartOf="@+id/kisasinav0_baslik"
-                app:layout_constraintTop_toBottomOf="@+id/kisasinav0_baslik" />
-
-            <TextView
-                android:id="@+id/kisasinav0_bilgi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Kısa Sınav: Sonuçlar için tıklayınız."
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/kisasinav0_bilgi_bg"
-                app:layout_constraintStart_toStartOf="@+id/kisasinav0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/kisasinav0_baslik" />
-
-            <TextView
-                android:id="@+id/kisasinav0_tarih"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif-light"
-                android:text="01.01.2021"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/kisasinav0_bilgi_bg"
-                app:layout_constraintEnd_toEndOf="@+id/kisasinav0_bilgi_bg"
-                app:layout_constraintTop_toBottomOf="@+id/kisasinav0_baslik" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_gonderi"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false"
+        android:listSelector="@android:color/transparent"/>
 
     <ImageButton
         android:id="@+id/gonderi_ekle_buton"
@@ -298,7 +69,7 @@
         android:layout_marginBottom="96dp"
         android:background="@drawable/buton_mor_daire_kenar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_33" />
 
     <androidx.appcompat.widget.Toolbar

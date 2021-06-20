@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/gonderi_baslik"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/kare_10_10_0_0"
+            android:backgroundTint="@color/mor"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="Gönderi Başlığı"
+            android:textColor="@color/beyaz"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/gonderi_icerik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10dp"
+            android:paddingTop="40dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp"
+            android:text="İçerik Yazısı"
+            android:textColor="@color/mor"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/gonderi_bilgi_bg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="-75dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/mor_5" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/gonderi_bilgi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="81dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Gönderi "
+        android:textColor="@color/mor"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/gonderi_bilgi_ek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="25dp"
+        android:layout_toRightOf="@+id/gonderi_bilgi"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/mor"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/gonderi_tarih"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="35dp"
+        android:fontFamily="sans-serif-light"
+        android:text="01-01-2021"
+        android:textColor="@color/mor"
+        android:textSize="14sp" />
+
+</RelativeLayout>

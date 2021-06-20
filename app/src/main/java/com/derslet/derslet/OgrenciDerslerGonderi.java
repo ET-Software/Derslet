@@ -2,17 +2,15 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class OgrenciDerslerGonderi extends AppCompatActivity {
 
@@ -26,6 +24,8 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
 
     String ders_id;
     String ders_adi;
+
+    ListView ogrenci_gonderi_listesi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,17 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
                 OgrenciDerslerGonderi.this.overridePendingTransition(R.anim.slidein_lr,R.anim.slideout_lr);
             }
         });
+
+        // Öğrencinin kısa sınavı yapıp yapmadığı durumu kontrolü yapılacak.
+
+        ogrenci_gonderi_listesi = (ListView) findViewById(R.id.ogrenci_gonderi_listesi);
+        ArrayList<Gonderi> arrayList = new ArrayList<>();
+        arrayList.add(new Gonderi(0,"Gönderi1", "01-01-2021", "Normal Gönderi", null));
+        arrayList.add(new Gonderi(1,"Gönderi2", "02-02-2021", "Bağlantı Gönderi", "https://www.google.com.tr"));
+        arrayList.add(new Gonderi(2,"Gönderi3", "03-03-2021", "Kısa Sınav Gönderi", "ID Yazılacak."));
+
+        GonderiAdapterOgrenci gonderiAdapter = new GonderiAdapterOgrenci(this, R.layout.list_gonderi, arrayList);
+        ogrenci_gonderi_listesi.setAdapter(gonderiAdapter);
     }
 
     @Override
