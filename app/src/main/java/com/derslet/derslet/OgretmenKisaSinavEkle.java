@@ -8,8 +8,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,6 +22,7 @@ public class OgretmenKisaSinavEkle extends AppCompatActivity {
     Button soru0_isim;
     Button gönder_buton;
     Button soru_ekle_buton;
+    ListView kisa_sinav_listesi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class OgretmenKisaSinavEkle extends AppCompatActivity {
             }
         });
 
-        soru0_isim = (Button)findViewById(R.id.soru0_isim);
+        /*soru0_isim = (Button)findViewById(R.id.soru0_isim);
         soru0_isim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +47,7 @@ public class OgretmenKisaSinavEkle extends AppCompatActivity {
                 startActivity(intent);
                 OgretmenKisaSinavEkle.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
-        });
+        });*/
 
         gönder_buton = (Button)findViewById(R.id.gonder_buton);
         gönder_buton.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +85,17 @@ public class OgretmenKisaSinavEkle extends AppCompatActivity {
                 // Yapılacak İşlemler
             }
         });
+
+        kisa_sinav_listesi = (ListView) findViewById(R.id.ogretmen_kisa_sinav_listesi);
+        ArrayList<KisaSinavEkle> arrayList = new ArrayList<>();
+        arrayList.add(new KisaSinavEkle("Soru1", "ID1"));
+        arrayList.add(new KisaSinavEkle("Soru2", "ID2"));
+        arrayList.add(new KisaSinavEkle("Soru3", "ID3"));
+        arrayList.add(new KisaSinavEkle("Soru4", "ID4"));
+        arrayList.add(new KisaSinavEkle("Soru5", "ID5"));
+
+        KisaSinavEkleAdapter kisaSinavEkleAdapter = new KisaSinavEkleAdapter(this, R.layout.list_ogretmen_kisa_sinav_ekle, arrayList);
+        kisa_sinav_listesi.setAdapter(kisaSinavEkleAdapter);
     }
     @Override
     public void onBackPressed() {
