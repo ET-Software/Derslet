@@ -106,9 +106,6 @@ public class OgretmenDuyuruEkle extends AppCompatActivity {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                     StrictMode.setThreadPolicy(policy);
 
-                    System.out.println("Secim: "+secim);
-                    System.out.println("Secim: "+dersidleri.get(secim));
-
                     try {
                         String sql = "INSERT INTO duyuru(dersid, icerik) VALUES ('" + dersidleri.get(secim) + "','" + duyuru_icerik.getText().toString() +"')";
                         stmt.executeUpdate(sql);

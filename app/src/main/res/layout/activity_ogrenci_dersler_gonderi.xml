@@ -46,20 +46,22 @@
 
     <ListView
         android:id="@+id/ogrenci_gonderi_listesi"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="74dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_gonderi"
+        android:childDivider="@null"
+        android:clipToPadding="false"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:childDivider="@null"
+        android:listSelector="@android:color/transparent"
         android:paddingBottom="25dp"
-        android:clipToPadding="false"
-        android:listSelector="@android:color/transparent"/>
+        app:layout_constraintBottom_toTopOf="@+id/altbar_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/list_gonderi" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/altbar_bg"

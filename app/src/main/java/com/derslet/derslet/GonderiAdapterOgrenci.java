@@ -1,5 +1,6 @@
 package com.derslet.derslet;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -41,7 +42,7 @@ public class GonderiAdapterOgrenci extends ArrayAdapter<Gonderi> {
         gonderi_bilgi.setText("Gönderi");
 
         if (getItem(position).getTip() == 1){
-            gonderi_bilgi.setText("Kaynak: İndirmek için ");
+            gonderi_bilgi.setText("Kaynak: Erişmek için ");
             gonderi_bilgi_ek.setText("tıklayınız.");
             gonderi_bilgi_ek.setClickable(true);
             gonderi_bilgi_ek.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +64,7 @@ public class GonderiAdapterOgrenci extends ArrayAdapter<Gonderi> {
                     kisa_sinav_id = getItem(position).kisa_sinav_id;
                     intent.putExtra("KISA_SINAV_ID", kisa_sinav_id);
                     mContext.startActivity(intent);
+                    ((Activity) mContext).overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                 }
             });
         }

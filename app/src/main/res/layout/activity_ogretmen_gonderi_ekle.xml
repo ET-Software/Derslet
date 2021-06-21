@@ -68,12 +68,12 @@
         app:startIconTint="@color/mor">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gonderi_baslik_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mor"
             android:fontFamily="sans-serif"
             android:inputType="text"
-            android:text="Derslet"
             android:textColor="@color/mor"
             android:textColorHint="@color/mor"
             android:textCursorDrawable="@drawable/imlec_siyah"
@@ -105,12 +105,12 @@
         app:startIconTint="@color/mor">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gonderi_icerik_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mor"
             android:fontFamily="sans-serif"
             android:inputType="textMultiLine"
-            android:text="Derslet bir dünya markasıdır. Bir gün herkes Derslet kullanacak..."
             android:textColor="@color/mor"
             android:textColorHint="@color/mor"
             android:textCursorDrawable="@drawable/imlec_siyah"
@@ -142,12 +142,12 @@
         app:startIconTint="@color/mor">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/gonderi_kaynak_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mor"
             android:fontFamily="sans-serif"
             android:inputType="text"
-            android:text="www.derslet.com.tr"
             android:textColor="@color/mor"
             android:textColorHint="@color/mor"
             android:textCursorDrawable="@drawable/imlec_siyah"

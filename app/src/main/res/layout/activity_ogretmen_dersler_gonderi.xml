@@ -46,20 +46,20 @@
 
     <ListView
         android:id="@+id/ogretmen_gonderi_listesi"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="74dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:childDivider="@null"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/altbar_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_gonderi"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:childDivider="@null"
-        android:paddingBottom="25dp"
-        android:clipToPadding="false"
-        android:listSelector="@android:color/transparent"/>
+        tools:listitem="@layout/list_gonderi" />
 
     <ImageButton
         android:id="@+id/gonderi_ekle_buton"
