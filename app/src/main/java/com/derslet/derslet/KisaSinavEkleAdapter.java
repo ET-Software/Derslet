@@ -18,12 +18,15 @@ import java.util.ArrayList;
 public class KisaSinavEkleAdapter extends ArrayAdapter<KisaSinavEkle> {
     private Context mContext;
     private int mResource;
-    String soru_id;
+    Soru[] sorular;
+    String ders_id;
 
-    public KisaSinavEkleAdapter(@NonNull Context context, int resource, @NonNull ArrayList<KisaSinavEkle> objects) {
+    public KisaSinavEkleAdapter(@NonNull Context context, int resource, @NonNull ArrayList<KisaSinavEkle> objects, @NonNull Soru[] sorular ,@NonNull String ders_id) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
+        this.sorular = sorular;
+        this.ders_id = ders_id;
     }
 
     @NonNull
@@ -39,8 +42,19 @@ public class KisaSinavEkleAdapter extends ArrayAdapter<KisaSinavEkle> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext.getApplicationContext(), OgretmenSoruEkleDuzenle.class);
-                soru_id = getItem(position).soru_id;
-                intent.putExtra("SORU_ID", soru_id);
+                intent.putExtra("DUZENLE_MI",true);
+                intent.putExtra("DERS_ID",ders_id);
+                for(int i = 0; i<sorular.length; i++){
+                    String soru_kayıt_ismi = "SORU"+(i+1);
+                    intent.putExtra(soru_kayıt_ismi,sorular[i].getSoru());
+                    intent.putExtra(soru_kayıt_ismi+"_CEVAP1",sorular[i].getCevap1());
+                    intent.putExtra(soru_kayıt_ismi+"_CEVAP2",sorular[i].getCevap2());
+                    intent.putExtra(soru_kayıt_ismi+"_CEVAP3",sorular[i].getCevap3());
+                    intent.putExtra(soru_kayıt_ismi+"_CEVAP4",sorular[i].getCevap4());
+                    intent.putExtra(soru_kayıt_ismi+"_CEVAP5",sorular[i].getCevap5());
+                }
+                intent.putExtra("DUZENLENECEK_SORU",position);
+                intent.putExtra("SORU_SAYISI",sorular.length);
                 mContext.startActivity(intent);
                 ((Activity) mContext).overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }

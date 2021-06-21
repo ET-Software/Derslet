@@ -81,12 +81,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/soru_icerigi_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="Türkiyenin başkenti neresidir?"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"
@@ -118,12 +118,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cevap1_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="Ankara"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"
@@ -155,12 +155,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cevap2_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="Trabzon"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"
@@ -192,12 +192,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cevap3_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="İzmir"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"
@@ -229,12 +229,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cevap4_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="İstanbul"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"
@@ -268,12 +268,12 @@
                 app:startIconTint="@color/mor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cevap5_metin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/mor"
                     android:fontFamily="sans-serif"
                     android:inputType="textMultiLine"
-                    android:text="Konya"
                     android:textColor="@color/mor"
                     android:textColorHint="@color/mor"
                     android:textCursorDrawable="@drawable/imlec_siyah"

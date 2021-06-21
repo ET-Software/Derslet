@@ -78,7 +78,9 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
                 sheetView.findViewById(R.id.kisasinav_ekle).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenKisaSinavEkle.class);
+                        Intent intent=new Intent(OgretmenDerslerGonderi.this, OgretmenSoruEkleDuzenle.class);
+                        intent.putExtra("ILK_SORU_MU",true);
+                        intent.putExtra("DERS_ID", ders_id);
                         startActivity(intent);
                         OgretmenDerslerGonderi.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                         altsecim.dismiss();
