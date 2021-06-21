@@ -44,84 +44,21 @@
         app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ListView
+        android:id="@+id/ogretmen_kisa_sinav_sonuclar_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <View
-                android:id="@+id/ogrenci0_bg"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_10_0_10_0_beyaz_kenar_mor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ogrenci0_sonuc"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ogrenci0_numara"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="170314110000"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@id/ogrenci0_isim"
-                app:layout_constraintEnd_toEndOf="@+id/ogrenci0_bg"
-                app:layout_constraintStart_toStartOf="@+id/ogrenci0_bg"
-                app:layout_constraintTop_toTopOf="@+id/ogrenci0_bg" />
-
-            <TextView
-                android:id="@+id/ogrenci0_isim"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif"
-                android:text="Derslet Uygulaması"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0_bg"
-                app:layout_constraintEnd_toEndOf="@+id/ogrenci0_bg"
-                app:layout_constraintStart_toStartOf="@+id/ogrenci0_bg"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci0_numara" />
-
-            <TextView
-                android:id="@+id/ogrenci0_sonuc"
-                android:layout_width="65dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_0_10_0_10"
-                android:backgroundTint="@color/mor"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center"
-                android:text="5 / 5"
-                android:textColor="@color/beyaz"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0_bg"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ogrenci0_bg"
-                app:layout_constraintTop_toTopOf="@+id/ogrenci0_bg" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ogretmen_kisa_sinav_sonuclar"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false"
+        android:listSelector="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
