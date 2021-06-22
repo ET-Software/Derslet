@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OgretmenDerslerGonderi extends AppCompatActivity {
 
@@ -158,6 +159,9 @@ public class OgretmenDerslerGonderi extends AppCompatActivity {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
+
+        // Gönderilerin tarihe göre sıralanması
+        Collections.reverse(gonderiler);
 
         gonderi_listesi.setAdapter(new GonderiAdapterOgretmen(this, R.layout.list_gonderi, gonderiler));
 

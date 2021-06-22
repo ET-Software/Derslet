@@ -19,11 +19,15 @@ public class GonderiAdapterOgrenci extends ArrayAdapter<Gonderi> {
     private Context mContext;
     private int mResource;
     String kisa_sinav_id;
+    String ders_id;
+    String ders_adi;
 
-    public GonderiAdapterOgrenci(@NonNull Context context, int resource, @NonNull ArrayList<Gonderi> objects) {
+    public GonderiAdapterOgrenci(@NonNull Context context, int resource, @NonNull ArrayList<Gonderi> objects, @NonNull String ders_id,@NonNull String ders_adi) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
+        this.ders_id = ders_id;
+        this.ders_adi  = ders_adi;
     }
 
     @NonNull
@@ -63,6 +67,8 @@ public class GonderiAdapterOgrenci extends ArrayAdapter<Gonderi> {
                     Intent intent = new Intent(mContext.getApplicationContext(), OgrenciDerslerKisasinav.class);
                     kisa_sinav_id = getItem(position).kisa_sinav_id;
                     intent.putExtra("KISA_SINAV_ID", kisa_sinav_id);
+                    intent.putExtra("DERS_ID", ders_id);
+                    intent.putExtra("DERS_ADI",ders_adi);
                     mContext.startActivity(intent);
                     ((Activity) mContext).overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                 }

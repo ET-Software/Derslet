@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OgrenciDerslerGonderi extends AppCompatActivity {
 
@@ -76,16 +77,6 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
                 OgrenciDerslerGonderi.this.overridePendingTransition(R.anim.slidein_lr,R.anim.slideout_lr);
             }
         });
-
-        // Öğrencinin kısa sınavı yapıp yapmadığı durumu kontrolü yapılacak.
-
-        ArrayList<Gonderi> arrayList = new ArrayList<>();
-        arrayList.add(new Gonderi(0,"Gönderi1", "01-01-2021", "Normal Gönderi", null));
-        arrayList.add(new Gonderi(1,"Gönderi2", "02-02-2021", "Bağlantı Gönderi", "https://www.google.com.tr"));
-        arrayList.add(new Gonderi(2,"Gönderi3", "03-03-2021", "Kısa Sınav Gönderi", "ID Yazılacak."));
-
-        GonderiAdapterOgrenci gonderiAdapter = new GonderiAdapterOgrenci(this, R.layout.list_gonderi, arrayList);
-        gonderi_listesi.setAdapter(gonderiAdapter);
     }
 
     @Override
@@ -127,7 +118,10 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
             System.exit(0);
         }
 
-        gonderi_listesi.setAdapter(new GonderiAdapterOgrenci(this, R.layout.list_gonderi, gonderiler));
+        // Gönderilerin tarihe göre sıralanması
+        Collections.reverse(gonderiler);
+
+        gonderi_listesi.setAdapter(new GonderiAdapterOgrenci(this, R.layout.list_gonderi, gonderiler, ders_id ,ders_adi));
 
     }
 

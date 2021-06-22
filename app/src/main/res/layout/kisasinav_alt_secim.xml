@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/kisasinav_alt_secim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/soru"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Soru"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/beyaz"
+        android:textAlignment="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cevap1_secim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:paddingBottom="10dp"
+            android:text="Cevap1"
+            android:textAlignment="center"
+            android:textColor="@color/mor"
+            android:background="@color/beyaz"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cevap2_secim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Cevap2"
+            android:textAlignment="center"
+            android:textColor="@color/mor"
+            android:background="@color/beyaz"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/cevap3_secim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Cevap3"
+            android:textAlignment="center"
+            android:textColor="@color/mor"
+            android:background="@color/beyaz"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cevap4_secim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Cevap4"
+            android:textAlignment="center"
+            android:textColor="@color/mor"
+            android:background="@color/beyaz"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/cevap5_secim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="25dp"
+            android:text="Cevap5"
+            android:textAlignment="center"
+            android:textColor="@color/mor"
+            android:background="@color/beyaz"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

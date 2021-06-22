@@ -34,4 +34,5 @@ public class KisaSinav {
     public void setSoru_id(String soru_id) {
         this.soru_id = soru_id;
     }
+
 }
