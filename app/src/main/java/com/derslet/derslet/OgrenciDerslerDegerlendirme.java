@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
     ImageButton buton1;
     ImageButton buton3;
     TextView baslik;
+    ListView ogrenci_degerlendirme_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -46,7 +49,7 @@ public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
             }
         });
 
-        degerlendirme0_buton = (Button)findViewById(R.id.degerlendirme0_buton);
+        /*degerlendirme0_buton = (Button)findViewById(R.id.degerlendirme0_buton);
         degerlendirme0_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +57,7 @@ public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
                 startActivity(intent);
                 OgrenciDerslerDegerlendirme.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
-        });
+        });*/
 
         buton1 = (ImageButton)findViewById(R.id.buton1);
         buton1.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +84,18 @@ public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
                 OgrenciDerslerDegerlendirme.this.overridePendingTransition(R.anim.slidein_lr,R.anim.slideout_lr);
             }
         });
+
+        // Öğretmen duyuru mantığı Yapıldı yapılmadı durumuna göre clickleme
+        ogrenci_degerlendirme_listesi = (ListView) findViewById(R.id.ogrenci_degerlendirme_listesi);
+        ArrayList<Degerlendirme> arrayList = new ArrayList<>();
+        arrayList.add(new Degerlendirme("2021-06-22 / 21:34", true));
+        arrayList.add(new Degerlendirme("2021-06-23 / 21:35", false));
+        arrayList.add(new Degerlendirme("2021-06-24 / 21:36", true));
+        arrayList.add(new Degerlendirme("2021-06-25 / 21:37", false));
+        arrayList.add(new Degerlendirme("2021-06-26 / 21:38", true));
+
+        DegerlendirmeOgrenciAdapter degerlendirmeOgrenciAdapter = new DegerlendirmeOgrenciAdapter(this, R.layout.list_ogrenci_degerlendirme, arrayList);
+        ogrenci_degerlendirme_listesi.setAdapter(degerlendirmeOgrenciAdapter);
     }
     
     @Override

@@ -82,54 +82,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/degerlendirme_yazı" />
 
-    <ScrollView
-        android:layout_width="0dp"
+    <ListView
+        android:id="@+id/ogrenci_degerlendirme_listesi"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="135dp"
+        android:childDivider="@null"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/altbar_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yatay_cizgi">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/degerlendirme0_buton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_10_0_10_0_beyaz_kenar_mor"
-                android:paddingLeft="10dp"
-                android:paddingTop="15dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="21 OCAK 2021 - 13:00"
-                android:textAlignment="textStart"
-                android:textColor="@color/mor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/degerlendirme0_bilgi"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/degerlendirme0_bilgi"
-                android:layout_width="90dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_0_10_0_10"
-                android:backgroundTint="@color/mor"
-                android:gravity="center"
-                android:text="Yapılmadı"
-                android:textColor="@color/beyaz"
-                app:layout_constraintBottom_toBottomOf="@+id/degerlendirme0_buton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/degerlendirme0_buton"
-                app:layout_constraintTop_toTopOf="@+id/degerlendirme0_buton" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ogrenci_degerlendirme" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/altbar_bg"
