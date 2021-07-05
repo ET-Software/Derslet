@@ -2,7 +2,9 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -121,7 +123,10 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
         // Gönderilerin tarihe göre sıralanması
         Collections.reverse(gonderiler);
 
-        gonderi_listesi.setAdapter(new GonderiAdapterOgrenci(this, R.layout.list_gonderi, gonderiler, ders_id ,ders_adi));
+        SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
+        String id = yerel_veriler.getString("Token","");
+
+        gonderi_listesi.setAdapter(new GonderiAdapterOgrenci(this, R.layout.list_gonderi, gonderiler, ders_id, id, ders_adi));
 
     }
 
