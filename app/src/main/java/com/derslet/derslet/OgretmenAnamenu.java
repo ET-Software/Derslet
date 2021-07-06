@@ -21,10 +21,10 @@ import java.sql.Statement;
 public class OgretmenAnamenu extends AppCompatActivity {
 
     ImageButton ayar_buton;
-    Button duyuru_buton;
-    Button derskontrol_buton;
-    Button dersler_buton;
-    Button sohbet_buton;
+    ImageButton duyuru_buton;
+    ImageButton derskontrol_buton;
+    ImageButton dersler_buton;
+    ImageButton sohbet_buton;
     TextView isim;
     ImageView profil;
 
@@ -73,7 +73,7 @@ public class OgretmenAnamenu extends AppCompatActivity {
             }
         });
 
-        duyuru_buton = (Button)findViewById(R.id.duyuru_buton);
+        duyuru_buton = (ImageButton)findViewById(R.id.duyuru_buton);
         duyuru_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class OgretmenAnamenu extends AppCompatActivity {
             }
         });
 
-        derskontrol_buton = (Button)findViewById(R.id.derskontrol_buton);
+        derskontrol_buton = (ImageButton)findViewById(R.id.derskontrol_buton);
         derskontrol_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class OgretmenAnamenu extends AppCompatActivity {
             }
         });
 
-        dersler_buton = (Button)findViewById(R.id.dersler_buton);
+        dersler_buton = (ImageButton)findViewById(R.id.dersler_buton);
         dersler_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class OgretmenAnamenu extends AppCompatActivity {
             }
         });
 
-        sohbet_buton = (Button)findViewById(R.id.sohbet_buton);
+        sohbet_buton = (ImageButton)findViewById(R.id.sohbet_buton);
         sohbet_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

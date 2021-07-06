@@ -80,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ogretmen_karsilama" />
 
-    <Button
+    <ImageButton
         android:id="@+id/duyuru_buton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -89,11 +89,12 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/buton_beyaz_kenar"
-        android:text="DY"
         app:layout_constraintBottom_toTopOf="@+id/dersler_buton"
         app:layout_constraintEnd_toStartOf="@+id/derskontrol_buton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar" />
+        app:layout_constraintTop_toBottomOf="@+id/ustbar"
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_baseline_assignment_124" />
 
     <TextView
         android:id="@+id/duyuru_buton_yazi"
@@ -107,7 +108,7 @@
         app:layout_constraintStart_toStartOf="@+id/duyuru_buton"
         app:layout_constraintTop_toBottomOf="@+id/duyuru_buton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/derskontrol_buton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -120,7 +121,9 @@
         app:layout_constraintBottom_toTopOf="@+id/sohbet_buton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/duyuru_buton"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar" />
+        app:layout_constraintTop_toBottomOf="@+id/ustbar"
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_baseline_play_lesson_124" />
 
     <TextView
         android:id="@+id/derskontrol_buton_yazi"
@@ -134,7 +137,7 @@
         app:layout_constraintStart_toStartOf="@+id/derskontrol_buton"
         app:layout_constraintTop_toBottomOf="@+id/derskontrol_buton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/dersler_buton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -148,7 +151,8 @@
         app:layout_constraintEnd_toStartOf="@+id/sohbet_buton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/duyuru_buton"
-        app:layout_constraintVertical_bias="0.0" />
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_baseline_auto_stories_124" />
 
     <TextView
         android:id="@+id/dersler_buton_yazi"
@@ -162,7 +166,7 @@
         app:layout_constraintStart_toStartOf="@+id/dersler_buton"
         app:layout_constraintTop_toBottomOf="@+id/dersler_buton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/sohbet_buton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -176,7 +180,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dersler_buton"
         app:layout_constraintTop_toBottomOf="@+id/derskontrol_buton"
-        app:layout_constraintVertical_bias="0.483" />
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_baseline_question_answer_124" />
 
     <TextView
         android:id="@+id/sohbet_buton_yazi"

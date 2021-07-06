@@ -20,10 +20,10 @@ import java.sql.Statement;
 public class OgrenciAnamenu extends AppCompatActivity {
 
     ImageButton ayar_buton;
-    Button duyuru_buton;
-    Button qrkod_buton;
-    Button dersler_buton;
-    Button sohbet_buton;
+    ImageButton duyuru_buton;
+    ImageButton qrkod_buton;
+    ImageButton dersler_buton;
+    ImageButton sohbet_buton;
     TextView isim;
     ImageView profil;
 
@@ -73,7 +73,7 @@ public class OgrenciAnamenu extends AppCompatActivity {
             }
         });
 
-        qrkod_buton = (Button)findViewById(R.id.qrkod_buton);
+        qrkod_buton = (ImageButton)findViewById(R.id.qrkod_buton);
         qrkod_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class OgrenciAnamenu extends AppCompatActivity {
             }
         });
 
-        duyuru_buton = (Button)findViewById(R.id.duyuru_buton);
+        duyuru_buton = (ImageButton)findViewById(R.id.duyuru_buton);
         duyuru_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class OgrenciAnamenu extends AppCompatActivity {
             }
         });
 
-        dersler_buton = (Button)findViewById(R.id.dersler_buton);
+        dersler_buton = (ImageButton)findViewById(R.id.dersler_buton);
         dersler_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class OgrenciAnamenu extends AppCompatActivity {
             }
         });
 
-        sohbet_buton = (Button)findViewById(R.id.sohbet_buton);
+        sohbet_buton = (ImageButton)findViewById(R.id.sohbet_buton);
         sohbet_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
