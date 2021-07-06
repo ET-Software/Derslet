@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
     ImageButton buton1;
     ImageButton buton2;
     TextView baslik;
+    ListView ogretmen_devamsizlik_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -46,7 +49,7 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
             }
         });
 
-        ders0_devamsizlik = (Button)findViewById(R.id.ders0_devamsizlik);
+        /*ders0_devamsizlik = (Button)findViewById(R.id.ders0_devamsizlik);
         ders0_devamsizlik.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +57,7 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
                 startActivity(intent);
                 OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
-        });
+        });*/
 
         buton1 = (ImageButton)findViewById(R.id.buton1);
         buton1.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +84,18 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
                 OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.slidein_rl,R.anim.slideout_rl);
             }
         });
+
+        // Öğretmen duyuru mantığı Yapıldı yapılmadı durumuna göre clickleme
+        ogretmen_devamsizlik_listesi = (ListView) findViewById(R.id.ogretmen_devamsizlik_listesi);
+        ArrayList<Devamsizlik> arrayList = new ArrayList<>();
+        arrayList.add(new Devamsizlik("2021-06-22 / 21:34", "100 / 100"));
+        arrayList.add(new Devamsizlik("2021-06-23 / 21:35", "90 / 100"));
+        arrayList.add(new Devamsizlik("2021-06-24 / 21:36", "80 / 100"));
+        arrayList.add(new Devamsizlik("2021-06-25 / 21:37", "70 / 100"));
+        arrayList.add(new Devamsizlik("2021-06-26 / 21:38", "60 / 100"));
+
+        DevamsizlikOgretmenAdapter devamsizlikOgretmenAdapter = new DevamsizlikOgretmenAdapter(this, R.layout.list_ogretmen_devamsizlik, arrayList);
+        ogretmen_devamsizlik_listesi.setAdapter(devamsizlikOgretmenAdapter);
     }
     @Override
     public void onBackPressed() {
