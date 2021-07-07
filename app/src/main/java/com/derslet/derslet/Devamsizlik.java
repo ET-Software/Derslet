@@ -1,7 +1,7 @@
 package com.derslet.derslet;
 
 public class Devamsizlik {
-    String tarih_saat;
+    String tarih_saat = "";
     Boolean bilgi;
     String bilgi2;
     String ogrencinumara;

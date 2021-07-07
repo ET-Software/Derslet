@@ -29,8 +29,11 @@ public class DevamsizlikOgretmenAdapter extends ArrayAdapter<Devamsizlik> {
         convertView = layoutInflater.inflate(mResource, parent, false);
         TextView tarih_saat = convertView.findViewById(R.id.devamsizlik_tarih_saat);
         TextView bilgi = convertView.findViewById(R.id.devamsizlik_bilgi);
-        tarih_saat.setText(getItem(position).getTarih_saat());
         bilgi.setText(getItem(position).getBilgi2());
+
+        if (getItem(position).getTarih_saat() != ""){
+            tarih_saat.setText(getItem(position).getTarih_saat());
+        }
 
         return convertView;
     }

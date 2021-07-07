@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class OgretmenDevamsizlikDetay extends AppCompatActivity {
 
     ImageButton geri_buton;
-    Button ogrenci0_buton;
     ListView ogretmen_devamsizlik_ogrenci_listesi;
 
     @Override
@@ -32,7 +31,7 @@ public class OgretmenDevamsizlikDetay extends AppCompatActivity {
             }
         });
 
-        ogrenci0_buton = (Button)findViewById(R.id.ogrenci0_buton);
+        /*ogrenci0_buton = (Button)findViewById(R.id.ogrenci0_buton);
         ogrenci0_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +39,7 @@ public class OgretmenDevamsizlikDetay extends AppCompatActivity {
                 startActivity(intent);
                 OgretmenDevamsizlikDetay.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
-        });
+        });*/
 
         // Öğretmen duyuru mantığı Yapıldı yapılmadı durumuna göre clickleme
         ogretmen_devamsizlik_ogrenci_listesi = (ListView) findViewById(R.id.ogretmen_devamsizlik_ogrenci_listesi);

@@ -4,23 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
 
     ImageButton geri_buton;
-    Button ders0_devamsizlik;
     ImageButton buton1;
     ImageButton buton2;
     TextView baslik;
-    ListView ogretmen_devamsizlik_listesi;
+    ListView devamsizlik_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -36,6 +39,7 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
         ders_id = getIntent().getStringExtra("DERS_ID");
         ders_adi = getIntent().getStringExtra("DERS_ADI");
 
+        devamsizlik_listesi = (ListView) findViewById(R.id.ogretmen_devamsizlik_listesi);
         baslik = findViewById(R.id.baslik);
         baslik.setText(ders_adi);
 
@@ -48,16 +52,6 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
                 OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
-
-        /*ders0_devamsizlik = (Button)findViewById(R.id.ders0_devamsizlik);
-        ders0_devamsizlik.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDevamsizlikDetay.class);
-                startActivity(intent);
-                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-            }
-        });*/
 
         buton1 = (ImageButton)findViewById(R.id.buton1);
         buton1.setOnClickListener(new View.OnClickListener() {
@@ -85,17 +79,61 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
             }
         });
 
-        // Öğretmen duyuru mantığı Yapıldı yapılmadı durumuna göre clickleme
-        ogretmen_devamsizlik_listesi = (ListView) findViewById(R.id.ogretmen_devamsizlik_listesi);
-        ArrayList<Devamsizlik> arrayList = new ArrayList<>();
-        arrayList.add(new Devamsizlik("2021-06-22 / 21:34", "100 / 100"));
-        arrayList.add(new Devamsizlik("2021-06-23 / 21:35", "90 / 100"));
-        arrayList.add(new Devamsizlik("2021-06-24 / 21:36", "80 / 100"));
-        arrayList.add(new Devamsizlik("2021-06-25 / 21:37", "70 / 100"));
-        arrayList.add(new Devamsizlik("2021-06-26 / 21:38", "60 / 100"));
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ArrayList<Devamsizlik> devamsizliklar = new ArrayList<Devamsizlik>();
+        ArrayList<String> derskontrol_idler = new ArrayList<String>();
+        int kisi_sayisi = 0;
 
-        DevamsizlikOgretmenAdapter devamsizlikOgretmenAdapter = new DevamsizlikOgretmenAdapter(this, R.layout.list_ogretmen_devamsizlik, arrayList);
-        ogretmen_devamsizlik_listesi.setAdapter(devamsizlikOgretmenAdapter);
+        // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        try {
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM dersler WHERE id = '" + ders_id + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                kisi_sayisi = rs.getInt("kisisayisi");
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        // Veritabanı İşlemleri
+        try {
+            String sql = "SELECT * FROM derskontrol WHERE dersid = '" + ders_id + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                derskontrol_idler.add(rs.getString("id"));
+                devamsizliklar.add(new Devamsizlik(rs.getString("tarih"), (rs.getString("katilimcisayisi")+" / "+Integer.toString(kisi_sayisi))));
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        Collections.reverse(devamsizliklar);
+        Collections.reverse(derskontrol_idler);
+        devamsizlik_listesi.setAdapter(new DevamsizlikOgretmenAdapter(this, R.layout.list_ogretmen_devamsizlik, devamsizliklar));
+
+        devamsizlik_listesi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDevamsizlikDetay.class);
+                intent.putExtra("DERS_KONTROL_ID", derskontrol_idler.get(pos));
+                intent.putExtra("DERS_ADI", ders_adi);
+                startActivity(intent);
+                OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            }
+        });
     }
     @Override
     public void onBackPressed() {

@@ -44,49 +44,19 @@
         app:layout_constraintTop_toTopOf="@+id/ustbar_bg"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/devamsizlik_tipi_secim"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:hint="Devamsızlık Tipi"
-        android:textColorHint="@color/mor_75"
-        app:boxBackgroundColor="@color/mor_5"
-        app:boxStrokeColor="@color/mor"
-        app:endIconTint="@color/mor"
-        app:hintTextColor="@color/mor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg">
-
-        <AutoCompleteTextView
-            android:id="@+id/ic_liste"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:inputType="none"
-            android:textCursorDrawable="@drawable/imlec_siyah"
-            android:textSize="14sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
     <ListView
         android:id="@+id/ogretmen_devamsizlik_ogrenci_listesi"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="155dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:childDivider="@null"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_ogretmen_devamsizlik_ogrenci"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:childDivider="@null"
-        android:paddingBottom="25dp"
-        android:clipToPadding="false" />
+        app:layout_constraintTop_toBottomOf="@+id/ustbar_bg"
+        tools:listitem="@layout/list_ogretmen_devamsizlik_ogrenci" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
