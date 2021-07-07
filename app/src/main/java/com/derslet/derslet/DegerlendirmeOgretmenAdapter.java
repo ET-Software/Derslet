@@ -30,9 +30,16 @@ public class DegerlendirmeOgretmenAdapter extends ArrayAdapter<Degerlendirme> {
         TextView tarih_saat = convertView.findViewById(R.id.degerlendirme_tarih_saat);
         TextView ortalama = convertView.findViewById(R.id.degerlendirme_bilgi);
         TextView yorum = convertView.findViewById(R.id.degerlendirme_yorum);
-        tarih_saat.setText(getItem(position).getTarih_saat());
-        ortalama.setText(getItem(position).getOrtalama().toString());
-        yorum.setText(getItem(position).getYorum());
+        TextView ortalama2 = convertView.findViewById(R.id.degerlendirme_baslik);
+        if (getItem(position).getTarih_saat() != ""){
+            tarih_saat.setText(getItem(position).getTarih_saat());
+            ortalama.setText(getItem(position).getOrtalama().toString());
+        }
+        if (getItem(position).getYorum() != ""){
+            yorum.setText(getItem(position).getYorum());
+            ortalama2.setText("Öğrencinin Değerlendirme Ortalaması: " + getItem(position).getOrtalama2());
+        }
+
 
         return convertView;
     }

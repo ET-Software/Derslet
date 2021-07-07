@@ -1,10 +1,11 @@
 package com.derslet.derslet;
 
 public class Degerlendirme {
-    String tarih_saat;
+    String tarih_saat = "";
     Boolean bilgi;
     Float ortalama;
-    String yorum;
+    Float ortalama2;
+    String yorum = "";
 
     public Degerlendirme(String tarih_saat, Boolean bilgi){
         this.tarih_saat = tarih_saat;
@@ -17,7 +18,7 @@ public class Degerlendirme {
     }
 
     public Degerlendirme(Float ortalama, String yorum) {
-        this.ortalama = ortalama;
+        this.ortalama2 = ortalama;
         this.yorum = yorum;
     }
 
@@ -51,5 +52,13 @@ public class Degerlendirme {
 
     public void setYorum(String yorum) {
         this.yorum = yorum;
+    }
+
+    public Float getOrtalama2() {
+        return ortalama2;
+    }
+
+    public void setOrtalama2(Float ortalama2) {
+        this.ortalama2 = ortalama2;
     }
 }

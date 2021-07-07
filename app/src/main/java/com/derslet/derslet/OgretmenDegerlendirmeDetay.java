@@ -59,8 +59,8 @@ public class OgretmenDegerlendirmeDetay extends AppCompatActivity {
         arrayList.add(new Degerlendirme((float) 4.13, "Avü pişmanlıktır4"));
         arrayList.add(new Degerlendirme((float) 4.14, "Avü pişmanlıktır5"));
 
-        DegerlendirmeOgrenciAdapter degerlendirmeOgrenciAdapter = new DegerlendirmeOgrenciAdapter(this, R.layout.list_ogretmen_degerlendirme_detay, arrayList);
-        ogretmen_degerlendirme_yorum_listesi.setAdapter(degerlendirmeOgrenciAdapter);
+        DegerlendirmeOgretmenAdapter degerlendirmeOgretmenAdapter = new DegerlendirmeOgretmenAdapter(this, R.layout.list_ogretmen_degerlendirme_detay, arrayList);
+        ogretmen_degerlendirme_yorum_listesi.setAdapter(degerlendirmeOgretmenAdapter);
     }
 
     @Override
