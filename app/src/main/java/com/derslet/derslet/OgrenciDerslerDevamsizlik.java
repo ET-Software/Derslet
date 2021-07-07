@@ -83,15 +83,6 @@ public class OgrenciDerslerDevamsizlik extends AppCompatActivity {
             }
         });
 
-        // Öğretmen duyuru mantığı Yapıldı yapılmadı durumuna göre clickleme
-        ArrayList<Devamsizlik> arrayList = new ArrayList<>();
-        arrayList.add(new Devamsizlik("2021-06-22 / 21:34", true));
-        arrayList.add(new Devamsizlik("2021-06-23 / 21:35", false));
-        arrayList.add(new Devamsizlik("2021-06-24 / 21:36", true));
-        arrayList.add(new Devamsizlik("2021-06-25 / 21:37", false));
-        arrayList.add(new Devamsizlik("2021-06-26 / 21:38", true));
-
-
     }
 
     @Override

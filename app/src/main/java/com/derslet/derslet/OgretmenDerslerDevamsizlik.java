@@ -129,6 +129,7 @@ public class OgretmenDerslerDevamsizlik extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
                 Intent intent=new Intent(OgretmenDerslerDevamsizlik.this, OgretmenDevamsizlikDetay.class);
                 intent.putExtra("DERS_KONTROL_ID", derskontrol_idler.get(pos));
+                intent.putExtra("DERS_ID", ders_id);
                 intent.putExtra("DERS_ADI", ders_adi);
                 startActivity(intent);
                 OgretmenDerslerDevamsizlik.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);

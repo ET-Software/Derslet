@@ -26,7 +26,7 @@ public class OgretmenDegerlendirmeDetay extends AppCompatActivity {
     Statement stmt = null;
 
     String derskontrol_id;
-    ListView ogretmen_degerlendirme_yorum_listesi;
+    ListView degerlendirme_yorum_listesi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class OgretmenDegerlendirmeDetay extends AppCompatActivity {
 
         derskontrol_id =  getIntent().getStringExtra("DERS_KONTROL_ID");
 
+        degerlendirme_yorum_listesi = (ListView) findViewById(R.id.ogretmen_degerlendirme_yorum_listesi);
         baslik = findViewById(R.id.baslik);
         baslik.setText(getIntent().getStringExtra("DERS_TARIH"));
         ders_ortalama_metni = (TextView) findViewById(R.id.degerlendirme_soru1_ortalama);
@@ -51,21 +52,16 @@ public class OgretmenDegerlendirmeDetay extends AppCompatActivity {
             }
         });
 
-        ogretmen_degerlendirme_yorum_listesi = (ListView) findViewById(R.id.ogretmen_degerlendirme_yorum_listesi);
-        ArrayList<Degerlendirme> arrayList = new ArrayList<>();
-        arrayList.add(new Degerlendirme((float) 4.10, "Avü pişmanlıktır"));
-        arrayList.add(new Degerlendirme((float) 4.11, "Avü pişmanlıktır2"));
-        arrayList.add(new Degerlendirme((float) 4.12, "Avü pişmanlıktır3"));
-        arrayList.add(new Degerlendirme((float) 4.13, "Avü pişmanlıktır4"));
-        arrayList.add(new Degerlendirme((float) 4.14, "Avü pişmanlıktır5"));
 
-        DegerlendirmeOgretmenAdapter degerlendirmeOgretmenAdapter = new DegerlendirmeOgretmenAdapter(this, R.layout.list_ogretmen_degerlendirme_detay, arrayList);
-        ogretmen_degerlendirme_yorum_listesi.setAdapter(degerlendirmeOgretmenAdapter);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        ArrayList<Degerlendirme> degerlendirmeler = new ArrayList<>();
+
         try {
             stmt = (veritabani.getExtraConnection()).createStatement();
             String sql = "SELECT * FROM degerlendirmeistatistik WHERE id = '"+derskontrol_id+"'";
@@ -90,6 +86,22 @@ public class OgretmenDegerlendirmeDetay extends AppCompatActivity {
             System.exit(0);
         }
 
+        try {
+            String sql = "SELECT * FROM degerlendirme WHERE derskontrolid = '"+derskontrol_id+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                float ortalama = rs.getFloat("ortalama");
+                String  yorum = rs.getString("yorum");
+                degerlendirmeler.add(new Degerlendirme(ortalama, yorum));
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        degerlendirme_yorum_listesi.setAdapter(new DegerlendirmeOgretmenAdapter(this, R.layout.list_ogretmen_degerlendirme_detay, degerlendirmeler));
     }
 
     @Override
