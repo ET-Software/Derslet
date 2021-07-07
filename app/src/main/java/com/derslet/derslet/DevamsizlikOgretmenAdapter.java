@@ -29,10 +29,16 @@ public class DevamsizlikOgretmenAdapter extends ArrayAdapter<Devamsizlik> {
         convertView = layoutInflater.inflate(mResource, parent, false);
         TextView tarih_saat = convertView.findViewById(R.id.devamsizlik_tarih_saat);
         TextView bilgi = convertView.findViewById(R.id.devamsizlik_bilgi);
+        TextView ogrencinumara = convertView.findViewById(R.id.devamsizlik_numara);
+        TextView ogrenciisim = convertView.findViewById(R.id.devamsizlik_isim);
         bilgi.setText(getItem(position).getBilgi2());
-
         if (getItem(position).getTarih_saat() != ""){
             tarih_saat.setText(getItem(position).getTarih_saat());
+        }
+        if (getItem(position).getOgrencinumara() != "" && getItem(position).getOgrenciisim() != ""){
+            ogrencinumara.setText(getItem(position).getOgrencinumara());
+            ogrenciisim.setText(getItem(position).getOgrenciisim());
+            bilgi.setText(getItem(position).getBilgi3());
         }
 
         return convertView;

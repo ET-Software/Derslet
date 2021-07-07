@@ -4,8 +4,9 @@ public class Devamsizlik {
     String tarih_saat = "";
     Boolean bilgi;
     String bilgi2;
-    String ogrencinumara;
-    String ogrenciisim;
+    String ogrencinumara = "";
+    String ogrenciisim = "";
+    String bilgi3 = "";
 
     public Devamsizlik(String tarih_saat, Boolean bilgi) {
         this.tarih_saat = tarih_saat;
@@ -20,7 +21,7 @@ public class Devamsizlik {
     public Devamsizlik(String ogrencinumara, String ogrenciisim, String bilgi) {
         this.ogrencinumara = ogrencinumara;
         this.ogrenciisim = ogrenciisim;
-        this.bilgi2 = bilgi;
+        this.bilgi3 = bilgi;
     }
 
     public String getTarih_saat() {
@@ -61,5 +62,13 @@ public class Devamsizlik {
 
     public void setOgrenciisim(String ogrenciisim) {
         this.ogrenciisim = ogrenciisim;
+    }
+
+    public String getBilgi3() {
+        return bilgi3;
+    }
+
+    public void setBilgi3(String bilgi3) {
+        this.bilgi3 = bilgi3;
     }
 }
