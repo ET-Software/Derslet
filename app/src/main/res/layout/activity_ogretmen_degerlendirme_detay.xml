@@ -161,78 +161,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/degerlendirme_genel" />
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ListView
+        android:id="@+id/ogretmen_degerlendirme_yorum_listesi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="293dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yatay_cizgi"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <View
-                android:id="@+id/ogrenci0_ortalama_bg"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_0_0"
-                android:backgroundTint="@color/mor"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0_degerlendirme_ortalama_yazi"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ogrenci0_degerlendirme_ortalama_yazi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:fontFamily="sans-serif-black"
-                android:gravity="right|center_vertical"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="Öğrencinin Değerlendirme Ortalaması: "
-                android:textColor="@color/beyaz"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@id/ogrenci0_ortalama_bg"
-                app:layout_constraintStart_toStartOf="@id/ogrenci0_ortalama_bg"
-                app:layout_constraintTop_toTopOf="@id/ogrenci0_ortalama_bg" />
-
-            <TextView
-                android:id="@+id/ogrenci0_degerlendirme_ortalama"
-                android:layout_width="40dp"
-                android:layout_height="0dp"
-                android:gravity="left|center_vertical"
-                android:text="4.17"
-                android:textColor="@color/beyaz"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0_degerlendirme_ortalama_yazi"
-                app:layout_constraintStart_toEndOf="@+id/ogrenci0_degerlendirme_ortalama_yazi"
-                app:layout_constraintTop_toTopOf="@+id/ogrenci0_degerlendirme_ortalama_yazi" />
-
-            <TextView
-                android:id="@+id/ogrenci0_yorum"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_0_0_10_10_beyaz_kenar_mor"
-                android:fontFamily="sans-serif-medium"
-                android:paddingLeft="15dp"
-                android:paddingTop="20dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="20dp"
-                android:text="Yorum Metni"
-                android:textColor="@color/mor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/ogrenci0_ortalama_bg"
-                app:layout_constraintStart_toStartOf="@+id/ogrenci0_ortalama_bg"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci0_ortalama_bg" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ogretmen_degerlendirme_detay"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:childDivider="@null"
+        android:paddingBottom="25dp"
+        android:clipToPadding="false" />
 </androidx.constraintlayout.widget.ConstraintLayout>

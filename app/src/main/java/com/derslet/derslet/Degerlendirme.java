@@ -4,6 +4,7 @@ public class Degerlendirme {
     String tarih_saat;
     Boolean bilgi;
     Float ortalama;
+    String yorum;
 
     public Degerlendirme(String tarih_saat, Boolean bilgi){
         this.tarih_saat = tarih_saat;
@@ -13,6 +14,11 @@ public class Degerlendirme {
     public Degerlendirme(String tarih_saat, Float ortalama) {
         this.tarih_saat = tarih_saat;
         this.ortalama = ortalama;
+    }
+
+    public Degerlendirme(Float ortalama, String yorum) {
+        this.ortalama = ortalama;
+        this.yorum = yorum;
     }
 
     public String getTarih_saat() {
@@ -37,5 +43,13 @@ public class Degerlendirme {
 
     public void setOrtalama(Float ortalama) {
         this.ortalama = ortalama;
+    }
+
+    public String getYorum() {
+        return yorum;
+    }
+
+    public void setYorum(String yorum) {
+        this.yorum = yorum;
     }
 }
