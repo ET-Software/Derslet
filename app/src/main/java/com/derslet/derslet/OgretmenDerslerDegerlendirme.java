@@ -5,22 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OgretmenDerslerDegerlendirme extends AppCompatActivity {
 
     ImageButton geri_buton;
-    Button degerlendirme0_buton;
     ImageButton buton1;
     ImageButton buton3;
     TextView baslik;
-    ListView ogretmen_degerlendirme_listesi;
+    TextView degenlendirme_ortalamasi;
+    ListView degerlendirme_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -36,6 +39,8 @@ public class OgretmenDerslerDegerlendirme extends AppCompatActivity {
         ders_id = getIntent().getStringExtra("DERS_ID");
         ders_adi = getIntent().getStringExtra("DERS_ADI");
 
+        degenlendirme_ortalamasi = (TextView) findViewById(R.id.degerlendirme_ortalamasi);
+        degerlendirme_listesi = (ListView) findViewById(R.id.ogretmen_degerlendirme_listesi);
         baslik = findViewById(R.id.baslik);
         baslik.setText(ders_adi);
 
@@ -48,16 +53,6 @@ public class OgretmenDerslerDegerlendirme extends AppCompatActivity {
                 OgretmenDerslerDegerlendirme.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
-
-        /*degerlendirme0_buton = (Button)findViewById(R.id.degerlendirme0_buton);
-        degerlendirme0_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(OgretmenDerslerDegerlendirme.this, OgretmenDegerlendirmeDetay.class);
-                startActivity(intent);
-                OgretmenDerslerDegerlendirme.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-            }
-        });*/
 
         buton1 = (ImageButton)findViewById(R.id.buton1);
         buton1.setOnClickListener(new View.OnClickListener() {
@@ -85,19 +80,64 @@ public class OgretmenDerslerDegerlendirme extends AppCompatActivity {
             }
         });
 
-
-        // OgretmenDuyuru mantığı
-        ogretmen_degerlendirme_listesi = (ListView) findViewById(R.id.ogretmen_degerlendirme_listesi);
-        ArrayList<Degerlendirme> arrayList = new ArrayList<>();
-        arrayList.add(new Degerlendirme("2021-06-22 / 21:34", (float) 4.43));
-        arrayList.add(new Degerlendirme("2021-06-23 / 21:35", (float) 4.44));
-        arrayList.add(new Degerlendirme("2021-06-24 / 21:36", (float) 4.45));
-        arrayList.add(new Degerlendirme("2021-06-25 / 21:37", (float) 4.46));
-        arrayList.add(new Degerlendirme("2021-06-26 / 21:38", (float) 4.47));
-
-        DegerlendirmeOgretmenAdapter degerlendirmeOgretmenAdapter = new DegerlendirmeOgretmenAdapter(this, R.layout.list_ogretmen_degerlendirme, arrayList);
-        ogretmen_degerlendirme_listesi.setAdapter(degerlendirmeOgretmenAdapter);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ArrayList<Degerlendirme> degerlendirmeler = new ArrayList<Degerlendirme>();
+        ArrayList<String> derskontrol_idler = new ArrayList<String>();
+        try {
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM derskontrol WHERE dersid = '"+ders_id+"'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                degerlendirmeler.add(new Degerlendirme(rs.getString("tarih"),0.0f));
+                derskontrol_idler.add(rs.getString("id"));
+            }
+
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        try {
+            float ortalama = 0;
+            for(int i=0; i<derskontrol_idler.size();i++){
+                String sql = "SELECT * FROM degerlendirmeistatistik WHERE id = '"+derskontrol_idler.get(i)+"'";
+                ResultSet rs = stmt.executeQuery(sql);
+                if(rs.next()){
+                    degerlendirmeler.get(i).setOrtalama(rs.getFloat("genelortalama"));
+                    if(i==0){
+                        ortalama = rs.getFloat("genelortalama");
+                    }else{
+                        ortalama = ((ortalama * i) + rs.getFloat("genelortalama"))/(i+1);
+                    }
+                }
+            }
+            degenlendirme_ortalamasi.setText(Float.toString(ortalama));
+        } catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        Collections.reverse(degerlendirmeler);
+        Collections.reverse(derskontrol_idler);
+        degerlendirme_listesi.setAdapter(new DegerlendirmeOgretmenAdapter(this, R.layout.list_ogretmen_degerlendirme, degerlendirmeler));
+
+        degerlendirme_listesi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                Intent intent=new Intent(OgretmenDerslerDegerlendirme.this, OgretmenDegerlendirmeDetay.class);
+                intent.putExtra("DERS_KONTROL_ID", derskontrol_idler.get(pos));
+                intent.putExtra("DERS_TARIH", degerlendirmeler.get(pos).tarih_saat);
+                startActivity(intent);
+                OgretmenDerslerDegerlendirme.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
