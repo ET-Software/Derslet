@@ -8,10 +8,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +24,7 @@ public class OgretmenDersKontrol extends AppCompatActivity {
     Button qrkod_ac_buton;
     Button ders_bitir_buton;
     TextView baslik;
+    ListView ogrenci_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -97,6 +100,17 @@ public class OgretmenDersKontrol extends AppCompatActivity {
                 toast.show();
             }
         });
+
+        ogrenci_listesi = (ListView) findViewById(R.id.ogrenci_listesi);
+        ArrayList<DersKontrol> arrayList = new ArrayList<>();
+        arrayList.add(new DersKontrol("010", "Öğrenci", "1"));
+        arrayList.add(new DersKontrol("011", "Öğrenci", "1"));
+        arrayList.add(new DersKontrol("012", "Öğrenci", "1"));
+        arrayList.add(new DersKontrol("013", "Öğrenci", "1"));
+        arrayList.add(new DersKontrol("014", "Öğrenci", "1"));
+
+        DersKontrolAdapter dersKontrolAdapter = new DersKontrolAdapter(this, R.layout.list_ders_kontrol, arrayList);
+        ogrenci_listesi.setAdapter(dersKontrolAdapter);
     }
     @Override
     public void onBackPressed() {

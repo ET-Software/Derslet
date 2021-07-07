@@ -210,135 +210,22 @@
         app:layout_constraintTop_toTopOf="@+id/ogrencino"
         app:srcCompat="@drawable/ic_baseline_add_33" />
 
-    <ScrollView
-        android:layout_width="0dp"
+    <ListView
+        android:id="@+id/ogrenci_listesi"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="280dp"
+        android:childDivider="@null"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/altbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ogrencino">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <View
-                android:id="@+id/ogrenci0"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ogrenci0_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="170314110000"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0"
-                app:layout_constraintStart_toStartOf="@+id/ogrenci0"
-                app:layout_constraintTop_toTopOf="@+id/ogrenci0" />
-
-            <TextView
-                android:id="@+id/ogrenci_isim"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif"
-                android:text="Derslet Uygulaması"
-                android:textColor="@color/mor"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/ogrenci0_no"
-                app:layout_constraintEnd_toEndOf="@+id/ogrenci0"
-                app:layout_constraintStart_toEndOf="@+id/ogrenci0_no"
-                app:layout_constraintTop_toTopOf="@+id/ogrenci0_no" />
-
-            <View
-                android:id="@+id/ogrenci1"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci0" />
-
-            <View
-                android:id="@+id/ogrenci2"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci1" />
-
-            <View
-                android:id="@+id/ogrenci3"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci2" />
-
-            <View
-                android:id="@+id/ogrenci4"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci3" />
-
-            <View
-                android:id="@+id/ogrenci5"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci4" />
-
-            <View
-                android:id="@+id/ogrenci6"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/kare_10_10_10_10_beyaz_kenar_mor"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ogrenci5" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/list_ders_kontrol" />
 
     <View
         android:id="@+id/altbar"
