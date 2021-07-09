@@ -2,21 +2,17 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class OgretmenSohbetMesajlasma extends AppCompatActivity {
+public class OgrenciSohbetMesajlasma extends AppCompatActivity {
 
     ImageButton geri_buton;
     ImageButton gonder_buton;
@@ -26,7 +22,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ogretmen_sohbet_mesajlasma);
+        setContentView(R.layout.activity_ogrenci_sohbet_mesajlasma);
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
@@ -34,17 +30,17 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                OgretmenSohbetMesajlasma.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                OgrenciSohbetMesajlasma.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         });
 
         mesaj_listesi = (ListView) findViewById(R.id.mesaj_listesi);
         ArrayList<Sohbet> arrayList = new ArrayList<>();
-        arrayList.add(new Sohbet("1", "010", "Öğrenci"));
-        arrayList.add(new Sohbet("2", "011", "Öğrenci"));
-        arrayList.add(new Sohbet("3", "012", "Öğrenci"));
-        arrayList.add(new Sohbet("4", "013", "Öğrenci"));
-        arrayList.add(new Sohbet("5", "014", "Öğrenci"));
+        arrayList.add(new Sohbet(1, "010", "Öğrenci"));
+        arrayList.add(new Sohbet(2, "011", "Öğrenci"));
+        arrayList.add(new Sohbet(3, "012", "Öğrenci"));
+        arrayList.add(new Sohbet(4, "013", "Öğrenci"));
+        arrayList.add(new Sohbet(5, "014", "Öğrenci"));
 
         SohbetAdapter sohbetAdapter = new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, arrayList);
         mesaj_listesi.setAdapter(sohbetAdapter);
@@ -72,4 +68,5 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
+
 }

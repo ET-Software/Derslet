@@ -107,7 +107,7 @@ public class OgrenciAnamenu extends AppCompatActivity {
         sohbet_buton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(OgrenciAnamenu.this, OgrenciSohbetDers.class);
+                Intent intent=new Intent(OgrenciAnamenu.this, OgrenciSohbet.class);
                 startActivity(intent);
                 OgrenciAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }

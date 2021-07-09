@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/resim"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/mesaj_baslik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@id/resim"
+        android:fontFamily="sans-serif-medium"
+        android:text="İsim Soyisim"
+        android:textColor="@color/mor"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/mesaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="43dp"
+        android:layout_alignTop="@id/resim"
+        android:text="Merhaba"
+        android:textSize="14dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/mor"
+        android:padding="10dp"
+        android:background="@drawable/kare_0_10_10_10_beyaz_kenar_mor" />
+</RelativeLayout>
