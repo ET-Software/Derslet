@@ -168,7 +168,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="25dp"
-        android:hint="Öğrenci Numarası"
+        android:hint="Öğrenci Numarası Giriniz"
         android:textColorHint="@color/mor"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -185,12 +185,12 @@
         app:startIconTint="@color/mor">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eklenecek_ogrenci_metin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mor"
             android:fontFamily="sans-serif"
             android:inputType="number"
-            android:text="17031410000"
             android:textColor="@color/mor"
             android:textColorHint="@color/mor"
             android:textCursorDrawable="@drawable/imlec_siyah"

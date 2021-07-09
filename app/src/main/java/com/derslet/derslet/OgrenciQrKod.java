@@ -13,10 +13,14 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.util.Size;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,18 +28,23 @@ import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.concurrent.ExecutionException;
 
 public class OgrenciQrKod extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CAMERA = 0;
 
-    private PreviewView kamera_alani;
-    private ListenableFuture<ProcessCameraProvider> kamera_saglayici;
+    PreviewView kamera_alani;
+    ListenableFuture<ProcessCameraProvider> kamera_saglayici;
 
-    private ImageButton geri_buton;
+    ImageButton geri_buton;
 
+    Veritabani veritabani = new Veritabani();
+    Statement stmt = null;
 
+    Boolean qr_okundu_mu = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +144,40 @@ public class OgrenciQrKod extends AppCompatActivity {
 
     // Veri tabanı üzerinden qrkod kontrol edilip derse katılım sağlanacak
     void qrkodKontrolEt(String qrCode){
+        if(!qr_okundu_mu){
+            qr_okundu_mu = true;
+            //Yerel verilerde eğer giriş anahtarı kayıtlı ise veriyi çekme işlemi
+            SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
+            String id = yerel_veriler.getString("Token","");
 
+            // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+
+            // Veritabanı Sorgu İşlemleri
+            try {
+                stmt = (veritabani.getExtraConnection()).createStatement();
+                String sql = "INSERT INTO devamsizlik(ogrenciid, derskontrolid) VALUES('"+id+"','"+qrCode+"')";
+                stmt.executeUpdate(sql);
+
+                //Toast menü
+                Toast toast = Toast.makeText(getApplicationContext(), "Başarılı şekilde yoklamaya katıldınız!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 100);
+                toast.show();
+
+            } catch (Exception e){
+
+                //Toast menü
+                Toast toast = Toast.makeText(getApplicationContext(), "Bir hata meydana geldi!", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 100);
+                toast.show();
+
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                System.exit(0);
+            }
+
+            finish();
+            OgrenciQrKod.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+        }
     }
 }
