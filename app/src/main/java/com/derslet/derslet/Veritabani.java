@@ -7,11 +7,11 @@ public class Veritabani {
     private Connection connection;
 
     // private final String host = "ssprojectinstance.csv2nbvvgbcb.us-east-2.rds.amazonaws.com"  // For Amazon Postgresql
-    private final String host = "35.198.78.89";  // For Google Cloud Postgresql
+    private final String host = "35.234.91.196";  // For Google Cloud Postgresql
     private final String database = "derslet";
     private final int port = 5432;
     private final String user = "postgres";
-    private final String pass = "erentarik0312";
+    private final String pass = "tarikeren1104";
     private String url = "jdbc:postgresql://%s:%d/%s";
     private boolean status;
 
