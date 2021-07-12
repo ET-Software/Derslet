@@ -57,6 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ustbar_bg"
-        tools:listitem="@layout/list_ogretmen_devamsizlik_ogrenci" />
+        tools:listitem="@layout/list_ogretmen_devamsizlik_ogrenci"
+        android:listSelector="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
