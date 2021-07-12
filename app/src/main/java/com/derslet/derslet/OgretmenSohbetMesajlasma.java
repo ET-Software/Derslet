@@ -40,11 +40,11 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
 
         mesaj_listesi = (ListView) findViewById(R.id.mesaj_listesi);
         ArrayList<Sohbet> arrayList = new ArrayList<>();
-        arrayList.add(new Sohbet("1", "010", "Öğrenci"));
-        arrayList.add(new Sohbet("2", "011", "Öğrenci"));
-        arrayList.add(new Sohbet("3", "012", "Öğrenci"));
-        arrayList.add(new Sohbet("4", "013", "Öğrenci"));
-        arrayList.add(new Sohbet("5", "014", "Öğrenci"));
+        arrayList.add(new Sohbet(1, "010", "Öğrenci"));
+        arrayList.add(new Sohbet(2, "011", "Öğrenci"));
+        arrayList.add(new Sohbet(3, "012", "Öğrenci"));
+        arrayList.add(new Sohbet(4, "013", "Öğrenci"));
+        arrayList.add(new Sohbet(5, "014", "Öğrenci"));
 
         SohbetAdapter sohbetAdapter = new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, arrayList);
         mesaj_listesi.setAdapter(sohbetAdapter);
