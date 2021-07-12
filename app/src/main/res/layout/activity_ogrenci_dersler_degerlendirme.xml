@@ -63,7 +63,7 @@
         android:id="@+id/degerlendirme_ortalamasi"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:text="4.15"
+        android:text="0"
         android:textColor="@color/mor"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/degerlendirme_yazı"

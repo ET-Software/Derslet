@@ -133,17 +133,19 @@ public class OgrenciDerslerDegerlendirme extends AppCompatActivity {
         }
 
         try {
-            String sql = "SELECT * FROM degerlendirme WHERE ogrenciid = '"+ id + "'";
-            ResultSet rs = stmt.executeQuery(sql);
             float ortalama = 0;
-            int i = 0;
-            while(rs.next()){
-                if(i == 0){
-                    ortalama = rs.getFloat("ortalama");
-                    i++;
-                }else{
-                    ortalama = ((ortalama * i) + rs.getFloat("ortalama"))/(i+1);
+            for(int i = 0; i < dk_idler.size(); i++){
+                String sql = "SELECT * FROM degerlendirme WHERE ogrenciid = '"+ id + "' AND derskontrolid = '"+dk_idler.get(i)+"'";
+                ResultSet rs = stmt.executeQuery(sql);
+
+                if(rs.next()){
+                    if(i == 0){
+                        ortalama = rs.getFloat("ortalama");
+                    }else{
+                        ortalama = ((ortalama * i) + rs.getFloat("ortalama"))/(i+1);
+                    }
                 }
+
             }
             degenlendirme_ortalamasi.setText(Float.toString(ortalama));
         } catch (Exception e){
