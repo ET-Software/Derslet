@@ -96,7 +96,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/list_ogrenci_degerlendirme" />
+        tools:listitem="@layout/list_ogrenci_degerlendirme"
+        android:listSelector="@android:color/transparent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/altbar_bg"
