@@ -9,18 +9,32 @@ public class Gonderi {
     String gonderi_icerik;
     Uri gonderi_baglanti;
     String kisa_sinav_id;
+    int soru_sayisi;
 
-    public Gonderi(int tip, String gonderi_baslik, String gonderi_tarih, String gonderi_icerik, String arg) {
-        this.tip = tip;
+    public Gonderi(String gonderi_baslik, String gonderi_tarih, String gonderi_icerik) {
+        this.tip = 0;
         this.gonderi_baslik = gonderi_baslik;
         this.gonderi_tarih = gonderi_tarih;
         this.gonderi_icerik = gonderi_icerik;
-        if (tip == 1){
-            this.gonderi_baglanti = Uri.parse(arg);
-        }
-        else if (tip == 2){
-            this.kisa_sinav_id = arg;
-        }
+
+    }
+
+    public Gonderi(String gonderi_baslik, String gonderi_tarih, String gonderi_icerik, String uri) {
+        this.tip = 1;
+        this.gonderi_baslik = gonderi_baslik;
+        this.gonderi_tarih = gonderi_tarih;
+        this.gonderi_icerik = gonderi_icerik;
+        this.gonderi_baglanti = Uri.parse(uri);
+
+    }
+
+    public Gonderi(String gonderi_baslik, String gonderi_tarih, String gonderi_icerik, String kisa_sinav_id, int soru_sayisi) {
+        this.tip = 2;
+        this.gonderi_baslik = gonderi_baslik;
+        this.gonderi_tarih = gonderi_tarih;
+        this.gonderi_icerik = gonderi_icerik;
+        this.kisa_sinav_id = kisa_sinav_id;
+        this.soru_sayisi = soru_sayisi;
     }
 
     public String getGonderi_baslik() {

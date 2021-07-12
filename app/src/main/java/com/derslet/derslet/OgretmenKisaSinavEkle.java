@@ -80,7 +80,7 @@ public class OgretmenKisaSinavEkle extends AppCompatActivity {
                 String kisa_sinav_id;
                 try {
                     stmt = (veritabani.getExtraConnection()).createStatement();
-                    String sql = "INSERT INTO derslergonderi(dersid, tip, baslik, icerik) VALUES ('" + ders_id+ "','2','KISA SINAV','Toplam "+soru_sayisi+" adet soru bulunmaktadır.') RETURNING id";
+                    String sql = "INSERT INTO derslergonderi(dersid, tip, baslik, icerik, sorusayisi) VALUES ('" + ders_id+ "','2','KISA SINAV','Toplam "+soru_sayisi+" adet soru bulunmaktadır.','"+soru_sayisi+"') RETURNING id";
                     ResultSet rs = stmt.executeQuery(sql);
 
                     if(rs.next()){

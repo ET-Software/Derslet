@@ -20,6 +20,7 @@ public class GonderiAdapterOgretmen extends ArrayAdapter<Gonderi> {
     private Context mContext;
     private int mResource;
     String kisa_sinav_id;
+    int soru_sayisi;
 
     public GonderiAdapterOgretmen(@NonNull Context context, int resource, @NonNull ArrayList<Gonderi> objects) {
         super(context, resource, objects);
@@ -63,7 +64,9 @@ public class GonderiAdapterOgretmen extends ArrayAdapter<Gonderi> {
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext.getApplicationContext(), OgretmenKisaSinavSonuclar.class);
                     kisa_sinav_id = getItem(position).kisa_sinav_id;
+                    soru_sayisi = getItem(position).soru_sayisi;
                     intent.putExtra("KISA_SINAV_ID", kisa_sinav_id);
+                    intent.putExtra("SORU_SAYISI", soru_sayisi);
                     mContext.startActivity(intent);
                     ((Activity) mContext).overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                 }

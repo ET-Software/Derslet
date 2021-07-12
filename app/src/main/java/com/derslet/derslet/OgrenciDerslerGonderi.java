@@ -101,13 +101,13 @@ public class OgrenciDerslerGonderi extends AppCompatActivity {
             while(rs.next()){
                 switch (rs.getInt("tip")){
                     case 0:
-                        gonderiler.add(new Gonderi(0, rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik"), null));
+                        gonderiler.add(new Gonderi( rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik")));
                         break;
                     case 1:
-                        gonderiler.add(new Gonderi(1, rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik"), rs.getString("baglanti")));
+                        gonderiler.add(new Gonderi(rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik"), rs.getString("baglanti")));
                         break;
                     case 2:
-                        gonderiler.add(new Gonderi(2, rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik"), rs.getString("id")));
+                        gonderiler.add(new Gonderi(rs.getString("baslik"),rs.getString("tarih"),rs.getString("icerik"), rs.getString("id"), rs.getInt("sorusayisi")));
                         break;
                     default:
                         System.out.println("Gönderi Hatası: Gönderi tipi limit dışı!");
