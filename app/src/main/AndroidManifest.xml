@@ -25,7 +25,6 @@
         <activity android:name=".OgrenciDuyuru" />
         <activity android:name=".OgrenciSohbet" />
         <activity android:name=".OgrenciAnamenu" />
-        <activity android:name=".OgrenciAyarlar" />
         <activity android:name=".OgretmenSoruEkleDuzenle" />
         <activity android:name=".OgretmenSohbetMesajlasma" />
         <activity android:name=".OgretmenSohbet" />
@@ -45,7 +44,6 @@
         <activity android:name=".OgretmenDersKontrol" />
         <activity android:name=".OgretmenDersKontrolDersler" />
         <activity android:name=".OgretmenDegerlendirmeDetay" />
-        <activity android:name=".OgretmenAyarlar" />
         <activity android:name=".Giris" />
         <activity android:name=".Acilis">
             <intent-filter>

@@ -19,7 +19,6 @@ import java.sql.Statement;
 
 public class OgrenciAnamenu extends AppCompatActivity {
 
-    ImageButton ayar_buton;
     ImageButton duyuru_buton;
     ImageButton qrkod_buton;
     ImageButton dersler_buton;
@@ -60,18 +59,6 @@ public class OgrenciAnamenu extends AppCompatActivity {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-
-
-        //Butonlar
-        ayar_buton = (ImageButton)findViewById(R.id.ayar_buton);
-        ayar_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(OgrenciAnamenu.this, OgrenciAyarlar.class);
-                startActivity(intent);
-                OgrenciAnamenu.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-            }
-        });
 
         qrkod_buton = (ImageButton)findViewById(R.id.qrkod_buton);
         qrkod_buton.setOnClickListener(new View.OnClickListener() {
