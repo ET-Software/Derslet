@@ -72,6 +72,15 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
                         System.err.println(e.getClass().getName() + ": " + e.getMessage());
                         System.exit(0);
                     }
+
+                    // Veritabanı Sorgu İşlemleri
+                    try {
+                        String sql = "UPDATE sohbet SET durumogrenci = 'false' WHERE id = '"+sohbet_id+"'";
+                        stmt.executeUpdate(sql);
+                    }catch (Exception e){
+                        System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                        System.exit(0);
+                    }
                 }
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Lütfen mesaj yazınız.", Toast.LENGTH_SHORT);
@@ -87,6 +96,20 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // Veritabanı Sorgu İşlemleri
+        try {
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "UPDATE sohbet SET durumogretmen = 'true' WHERE id = '"+sohbet_id+"'";
+            stmt.executeUpdate(sql);
+        }catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
         mesajlariYenile(false);
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
@@ -101,6 +124,20 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             }
         }, 0, 5000); // 5 saniyede bir mesajları yeniliyor.
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Veritabanı Sorgu İşlemleri
+        try {
+            String sql = "UPDATE sohbet SET durumogretmen = 'true' WHERE id = '"+sohbet_id+"'";
+            stmt.executeUpdate(sql);
+        }catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
     }
 
     void mesajlariYenile(boolean isUpdate){

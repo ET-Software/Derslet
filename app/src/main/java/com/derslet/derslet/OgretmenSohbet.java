@@ -78,15 +78,11 @@ public class OgretmenSohbet extends AppCompatActivity {
 
                 if(rs.next()){
                     String durum = "";
-                    if (rs.getInt("durumogrenci") == 0){
-                        durum = "Okunmadı";
-                    }
-                    else if (rs.getInt("durumogrenci") == 1)
-                    {
+                    if (rs.getBoolean("durumogrenci")){
                         durum = "Okundu";
                     }
-                    else {
-                        durum = "Cevaplandı";
+                    else{
+                        durum = "Okunmadı";
                     }
                     sohbet.add(new Sohbet("", durum));
                     ogrenciidleri.add(rs.getString("ogrenciid"));
