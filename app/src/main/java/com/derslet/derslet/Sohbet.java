@@ -5,6 +5,7 @@ public class Sohbet {
     String ad_soyad = "";
     String mesaj = "";
     String numara = "";
+    String ogretmenler = "";
 
     public Sohbet(int profilresim, String ad_soyad, String mesaj) {
         this.profilresim = profilresim;
@@ -23,6 +24,9 @@ public class Sohbet {
         this.mesaj = mesaj;
     }
 
+    public Sohbet(String ogretmenler) {
+        this.ogretmenler = ogretmenler;
+    }
 
     public int getProfilresim() {
         return profilresim;
@@ -54,5 +58,13 @@ public class Sohbet {
 
     public void setNumara(String numara) {
         this.numara = numara;
+    }
+
+    public String getOgretmenler() {
+        return ogretmenler;
+    }
+
+    public void setOgretmenler(String ogretmenler) {
+        this.ogretmenler = ogretmenler;
     }
 }
