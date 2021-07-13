@@ -34,7 +34,7 @@ public class SohbetAdapter extends ArrayAdapter<Sohbet> {
         TextView sohbet_ogretmen_bilgi = convertView.findViewById(R.id.sohbet_ogretmen_bilgi);
         TextView sohbet_isim = convertView.findViewById(R.id.sohbet_isim);
         TextView sohbet_bilgi = convertView.findViewById(R.id.sohbet_bilgi);
-        TextView altsecim = convertView.findViewById(R.id.ogretmen_listesi);
+        TextView altsecim = convertView.findViewById(R.id.kisi_isim);
 
         if (getItem(position).getProfilresim() != 0){
             mesaj_baslik.setText(getItem(position).getAd_soyad());
@@ -49,10 +49,16 @@ public class SohbetAdapter extends ArrayAdapter<Sohbet> {
             sohbet_isim.setText(getItem(position).getAd_soyad());
             sohbet_bilgi.setText(getItem(position).getMesaj());
         }
-        else {
-            altsecim.setText(getItem(position).getOgretmenler());
+
+        if(getItem(position).getOgretmen() != ""){
+            altsecim.setText(getItem(position).getOgretmen());
         }
 
         return convertView;
     }
+
+    void updateData(@NonNull ArrayList<Sohbet> objects){
+
+    }
 }
+

@@ -2,41 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/kisasinav_alt_secim"
+    android:id="@+id/sohbet_alt_secim"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/soru"
+        android:id="@+id/alt_secim_baslik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Soru"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textColor="@color/beyaz"
         android:textAlignment="center"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:layout_gravity="center"
         />
-
-    <LinearLayout
+    <ListView
+        android:id="@+id/kisi_listesi"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/ogretmen_listesi"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:childDivider="@null"
-            android:clipToPadding="false"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:listSelector="@android:color/transparent"
-            android:paddingBottom="10dp"
-            tools:listitem="@layout/list_sohbet_alt_secim" />
-
-    </LinearLayout>
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:childDivider="@null"
+        android:clipToPadding="false"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent"
+        android:paddingBottom="10dp"
+        tools:listitem="@layout/list_sohbet_alt_secim"
+        />
 </LinearLayout>

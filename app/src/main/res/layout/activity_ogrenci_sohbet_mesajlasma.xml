@@ -45,7 +45,8 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_33" />
 
     <ListView
-        android:id="@+id/mesaj_listesi"
+        android:id="@+id/kisi_listesi"
+        android:stackFromBottom="true"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="74dp"

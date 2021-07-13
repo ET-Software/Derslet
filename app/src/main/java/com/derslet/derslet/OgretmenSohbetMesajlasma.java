@@ -2,16 +2,17 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,10 +24,21 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     EditText mesaj_alani;
     ListView mesaj_listesi;
 
+    Veritabani veritabani = new Veritabani();
+    Statement stmt = null;
+
+    String sohbet_id;
+    String ogrenci_isim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_sohbet_mesajlasma);
+
+        sohbet_id = getIntent().getStringExtra("SOHBET_ID");
+        ogrenci_isim = getIntent().getStringExtra("OGRENCI_ISIM");
+
+        mesaj_listesi = (ListView) findViewById(R.id.kisi_listesi);
+        mesaj_alani = (EditText) findViewById(R.id.mesaj_alani);
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
@@ -38,16 +50,6 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             }
         });
 
-        mesaj_listesi = (ListView) findViewById(R.id.mesaj_listesi);
-        ArrayList<Sohbet> arrayList = new ArrayList<>();
-        arrayList.add(new Sohbet(1, "010", "Öğrenci"));
-        arrayList.add(new Sohbet(2, "011", "Öğrenci"));
-        arrayList.add(new Sohbet(3, "012", "Öğrenci"));
-        arrayList.add(new Sohbet(4, "013", "Öğrenci"));
-        arrayList.add(new Sohbet(5, "014", "Öğrenci"));
-
-        SohbetAdapter sohbetAdapter = new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, arrayList);
-        mesaj_listesi.setAdapter(sohbetAdapter);
 
         gonder_buton = (ImageButton)findViewById(R.id.gonder_buton);
         gonder_buton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +57,20 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             public void onClick(View v) {
                 String mesaj = mesaj_alani.getText().toString();
                 if (!mesaj.equals("")){
-                    //Yapılacak işlemler
+                    // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                    StrictMode.setThreadPolicy(policy);
+
+                    // Veritabanı Sorgu İşlemleri
+                    try {
+                        stmt = (veritabani.getExtraConnection()).createStatement();
+                        String sql = "INSERT INTO mesajlar(sohbetid, mesaj, gonderen) VALUES('"+sohbet_id+"','"+mesaj+"','true')";
+                        stmt.executeUpdate(sql);
+                        mesajlariYenile();
+                    }catch (Exception e){
+                        System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                        System.exit(0);
+                    }
                 }
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Lütfen mesaj yazınız.", Toast.LENGTH_SHORT);
@@ -65,6 +80,53 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
                 mesaj_alani.setText("");
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mesajlariYenile();
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new TimerTask() {
+                    @Override
+                    public void run() {
+                        mesajlariYenile();
+                    }
+                });
+            }
+        }, 0, 5000); // 5 saniyede bir mesajları yeniliyor.
+
+    }
+
+    void mesajlariYenile(){
+
+        ArrayList<Sohbet> mesajlar = new ArrayList<>();
+
+        // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // Veritabanı Sorgu İşlemleri
+        try {
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM mesajlar WHERE sohbetid = '" + sohbet_id + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                mesajlar.add(new Sohbet(1, rs.getBoolean("gonderen")? "Siz" : ogrenci_isim,rs.getString("mesaj")));
+            }
+
+
+        }catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
+        mesaj_listesi.setAdapter(new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, mesajlar));
     }
 
     @Override

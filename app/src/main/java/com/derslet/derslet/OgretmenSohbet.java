@@ -20,8 +20,7 @@ import java.util.ArrayList;
 public class OgretmenSohbet extends AppCompatActivity {
 
     ImageButton geri_buton;
-    ImageButton sohbet_ac_buton;
-    ListView ogretmen_sohbet_listesi;
+    ListView sohbet_listesi;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -31,7 +30,7 @@ public class OgretmenSohbet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_sohbet);
 
-        ogretmen_sohbet_listesi = (ListView) findViewById(R.id.ogretmen_sohbet_listesi);
+        sohbet_listesi = (ListView) findViewById(R.id.ogretmen_sohbet_listesi);
 
         //Butonlar
         geri_buton = (ImageButton)findViewById(R.id.geri_buton);
@@ -43,13 +42,6 @@ public class OgretmenSohbet extends AppCompatActivity {
             }
         });
 
-        sohbet_ac_buton = (ImageButton)findViewById(R.id.sohbet_ac_buton);
-        sohbet_ac_buton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Yapılacak İşlemler
-            }
-        });
     }
 
     @Override
@@ -120,14 +112,15 @@ public class OgretmenSohbet extends AppCompatActivity {
         }
 
         //Sohbetlerin listelenmesi
-        ogretmen_sohbet_listesi.setAdapter(new SohbetAdapter(this, R.layout.list_sohbet_ogretmen, sohbet));
+        sohbet_listesi.setAdapter(new SohbetAdapter(this, R.layout.list_sohbet_ogretmen, sohbet));
 
         //Sohbet listesinin tıklama işlemleri
-        ogretmen_sohbet_listesi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        sohbet_listesi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
                 Intent intent=new Intent(OgretmenSohbet.this, OgretmenSohbetMesajlasma.class);
                 intent.putExtra("SOHBET_ID", sohbetidleri.get(pos));
+                intent.putExtra("OGRENCI_ISIM", sohbet.get(pos).getAd_soyad());
                 startActivity(intent);
                 OgretmenSohbet.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
