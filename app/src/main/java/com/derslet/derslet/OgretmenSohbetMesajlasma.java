@@ -23,6 +23,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     ImageButton gonder_buton;
     EditText mesaj_alani;
     ListView mesaj_listesi;
+    SohbetAdapter mesaj_listesi_adapter;
 
     Veritabani veritabani = new Veritabani();
     Statement stmt = null;
@@ -66,7 +67,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
                         stmt = (veritabani.getExtraConnection()).createStatement();
                         String sql = "INSERT INTO mesajlar(sohbetid, mesaj, gonderen) VALUES('"+sohbet_id+"','"+mesaj+"','true')";
                         stmt.executeUpdate(sql);
-                        mesajlariYenile();
+                        mesajlariYenile(true);
                     }catch (Exception e){
                         System.err.println(e.getClass().getName() + ": " + e.getMessage());
                         System.exit(0);
@@ -86,7 +87,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        mesajlariYenile();
+        mesajlariYenile(false);
 
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -94,7 +95,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
                 runOnUiThread(new TimerTask() {
                     @Override
                     public void run() {
-                        mesajlariYenile();
+                        mesajlariYenile(true);
                     }
                 });
             }
@@ -102,7 +103,7 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
 
     }
 
-    void mesajlariYenile(){
+    void mesajlariYenile(boolean isUpdate){
 
         ArrayList<Sohbet> mesajlar = new ArrayList<>();
 
@@ -126,7 +127,14 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             System.exit(0);
         }
 
-        mesaj_listesi.setAdapter(new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, mesajlar));
+        if(isUpdate){
+            mesaj_listesi_adapter.getData().clear();
+            mesaj_listesi_adapter.getData().addAll(mesajlar);
+            mesaj_listesi_adapter.notifyDataSetChanged();
+        }else{
+            mesaj_listesi_adapter = new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, mesajlar);
+            mesaj_listesi.setAdapter(mesaj_listesi_adapter);
+        }
     }
 
     @Override

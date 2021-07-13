@@ -11,15 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SohbetAdapter extends ArrayAdapter<Sohbet> {
     private Context mContext;
     private int mResource;
+    private List<Sohbet> mObjects;
 
     public SohbetAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Sohbet> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
+        this.mObjects = objects;
+    }
+
+    public List<Sohbet> getData() {
+        return mObjects;
     }
 
     @NonNull
@@ -55,10 +62,6 @@ public class SohbetAdapter extends ArrayAdapter<Sohbet> {
         }
 
         return convertView;
-    }
-
-    void updateData(@NonNull ArrayList<Sohbet> objects){
-
     }
 }
 

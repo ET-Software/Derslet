@@ -128,13 +128,13 @@ public class OgrenciSohbetMesajlasma extends AppCompatActivity {
             System.exit(0);
         }
         if(isUpdate){
-            mesaj_listesi_adapter.updateData(mesajlar); // Tarık
+            mesaj_listesi_adapter.getData().clear();
+            mesaj_listesi_adapter.getData().addAll(mesajlar);
             mesaj_listesi_adapter.notifyDataSetChanged();
         }else{
             mesaj_listesi_adapter = new SohbetAdapter(this, R.layout.list_sohbet_mesajlar, mesajlar);
             mesaj_listesi.setAdapter(mesaj_listesi_adapter);
         }
-
     }
 
 
