@@ -1,20 +1,16 @@
 package com.derslet.derslet;
 
+import android.graphics.Bitmap;
+
 public class Sohbet {
-    int profilresim = 0;
+    Bitmap profilresim = null;
     String ad_soyad = "";
     String mesaj = "";
     String numara = "";
     String ogretmen = "";
 
-    public Sohbet(int profilresim, String ad_soyad, String mesaj) {
+    public Sohbet(Bitmap profilresim, String ad_soyad, String mesaj) {
         this.profilresim = profilresim;
-        this.ad_soyad = ad_soyad;
-        this.mesaj = mesaj;
-    }
-
-    public Sohbet(String numara, String ad_soyad, String mesaj) {
-        this.numara = numara;
         this.ad_soyad = ad_soyad;
         this.mesaj = mesaj;
     }
@@ -28,11 +24,11 @@ public class Sohbet {
         this.ogretmen = ogretmen;
     }
 
-    public int getProfilresim() {
+    public Bitmap getProfilresim() {
         return profilresim;
     }
 
-    public void setProfilresim(int profilresim) {
+    public void setProfilresim(Bitmap profilresim) {
         this.profilresim = profilresim;
     }
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class SohbetAdapter extends ArrayAdapter<Sohbet> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         convertView = layoutInflater.inflate(mResource, parent, false);
+
         TextView mesaj_baslik = convertView.findViewById(R.id.mesaj_baslik);
         TextView mesaj = convertView.findViewById(R.id.mesaj);
         TextView sohbet_ogretmen_numara = convertView.findViewById(R.id.sohbet_ogretmen_numara);
@@ -42,8 +44,10 @@ public class SohbetAdapter extends ArrayAdapter<Sohbet> {
         TextView sohbet_isim = convertView.findViewById(R.id.sohbet_isim);
         TextView sohbet_bilgi = convertView.findViewById(R.id.sohbet_bilgi);
         TextView altsecim = convertView.findViewById(R.id.kisi_isim);
+        ImageView resim = convertView.findViewById(R.id.resim);
 
-        if (getItem(position).getProfilresim() != 0){
+        if (getItem(position).getProfilresim() != null){
+            resim.setImageBitmap(getItem(position).profilresim);
             mesaj_baslik.setText(getItem(position).getAd_soyad());
             mesaj.setText(getItem(position).getMesaj());
         }

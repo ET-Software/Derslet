@@ -2,6 +2,10 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
@@ -12,6 +16,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,15 +38,27 @@ public class OgrenciSohbetMesajlasma extends AppCompatActivity {
     Statement stmt = null;
 
     String sohbet_id;
+    String ogretmen_id;
+    String ogrenci_id;
     String ogretmen_isim;
+
+    Bitmap ogrenci_profil;
+    Bitmap ogretmen_profil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogrenci_sohbet_mesajlasma);
 
+        SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
+
         sohbet_id = getIntent().getStringExtra("SOHBET_ID");
+        ogrenci_id = yerel_veriler.getString("Token","");
+        ogretmen_id = getIntent().getStringExtra("OGRETMEN_ID");
         ogretmen_isim = getIntent().getStringExtra("OGRETMEN_ISIM");
+
+        ogrenci_profil = getProfilBitmap(false);
+        ogretmen_profil = getProfilBitmap(true);
 
         mesaj_listesi = (ListView) findViewById(R.id.kisi_listesi);
         mesaj_alani = (EditText) findViewById(R.id.mesaj_alani);
@@ -146,6 +166,7 @@ public class OgrenciSohbetMesajlasma extends AppCompatActivity {
 
         ArrayList<Sohbet> mesajlar = new ArrayList<>();
 
+
         // Veritabanı Hata Giderici ('java.sql.Statement java.sql.Connection.createStatement()' on a null object reference)
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -157,7 +178,17 @@ public class OgrenciSohbetMesajlasma extends AppCompatActivity {
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
-                mesajlar.add(new Sohbet(1, rs.getBoolean("gonderen")? ogretmen_isim : "Siz",rs.getString("mesaj")));
+                String mesaj_bilgi;
+                Bitmap mesaj_profil;
+                if(rs.getBoolean("gonderen")){
+                    mesaj_bilgi = ogretmen_isim;
+                    mesaj_profil = ogretmen_profil;
+                }else{
+                    mesaj_bilgi = "Siz";
+                    mesaj_profil = ogrenci_profil;
+                }
+
+                mesajlar.add(new Sohbet(mesaj_profil, mesaj_bilgi, rs.getString("mesaj")));
             }
 
 
@@ -175,11 +206,44 @@ public class OgrenciSohbetMesajlasma extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
     }
 
+
+    public Bitmap getProfilBitmap(boolean ogretmenMi) {
+        String id = ogretmenMi ? ogretmen_id: ogrenci_id;
+        try{
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM kullanicilar WHERE id = '" + id + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next())   return getBitmapFromURL(rs.getString("profilurl"));
+            else return null;
+
+        }catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+            return null;
+        }
+
+    }
+
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            // Log exception
+            return null;
+        }
+    }
 }

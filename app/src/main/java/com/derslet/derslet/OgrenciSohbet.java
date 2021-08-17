@@ -135,6 +135,7 @@ public class OgrenciSohbet extends AppCompatActivity {
                 Intent intent=new Intent(OgrenciSohbet.this, OgrenciSohbetMesajlasma.class);
                 intent.putExtra("SOHBET_ID", sohbetidleri.get(pos));
                 intent.putExtra("OGRETMEN_ISIM", sohbet.get(pos).getAd_soyad());
+                intent.putExtra("OGRETMEN_ID",ogretmenidleri.get(pos));
                 startActivity(intent);
                 OgrenciSohbet.this.overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }

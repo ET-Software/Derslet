@@ -2,6 +2,10 @@ package com.derslet.derslet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Gravity;
@@ -11,6 +15,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -29,14 +37,27 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     Statement stmt = null;
 
     String sohbet_id;
+    String ogretmen_id;
+    String ogrenci_id;
     String ogrenci_isim;
+
+    Bitmap ogretmen_profil;
+    Bitmap ogrenci_profil;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogretmen_sohbet_mesajlasma);
 
+        SharedPreferences yerel_veriler = getApplicationContext().getSharedPreferences("Yerel Veri", Context.MODE_PRIVATE);
+
         sohbet_id = getIntent().getStringExtra("SOHBET_ID");
+        ogretmen_id = yerel_veriler.getString("Token","");
+        ogrenci_id = getIntent().getStringExtra("OGRENCI_ID");
         ogrenci_isim = getIntent().getStringExtra("OGRENCI_ISIM");
+
+        ogretmen_profil = getProfilBitmap(true);
+        ogrenci_profil = getProfilBitmap(false);
 
         mesaj_listesi = (ListView) findViewById(R.id.kisi_listesi);
         mesaj_alani = (EditText) findViewById(R.id.mesaj_alani);
@@ -155,7 +176,18 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()){
-                mesajlar.add(new Sohbet(1, rs.getBoolean("gonderen")? "Siz" : ogrenci_isim,rs.getString("mesaj")));
+                String mesaj_bilgi;
+                Bitmap mesaj_profil;
+
+                if(rs.getBoolean("gonderen")){
+                    mesaj_bilgi = "Siz";
+                    mesaj_profil = ogretmen_profil;
+                }else{
+                    mesaj_bilgi = ogrenci_isim;
+                    mesaj_profil = ogrenci_profil;
+                }
+
+                mesajlar.add(new Sohbet(mesaj_profil, mesaj_bilgi, rs.getString("mesaj")));
             }
 
 
@@ -178,5 +210,40 @@ public class OgretmenSohbetMesajlasma extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+    }
+
+
+    public Bitmap getProfilBitmap(boolean ogretmenMi) {
+        String id = ogretmenMi ? ogretmen_id: ogrenci_id;
+        try{
+            stmt = (veritabani.getExtraConnection()).createStatement();
+            String sql = "SELECT * FROM kullanicilar WHERE id = '" + id + "' ";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next())   return getBitmapFromURL(rs.getString("profilurl"));
+            else return null;
+
+        }catch (Exception e){
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+            return null;
+        }
+
+    }
+
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            // Log exception
+            return null;
+        }
     }
 }
